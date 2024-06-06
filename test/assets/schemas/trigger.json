@@ -1,0 +1,262 @@
+{
+  "@context": {
+    "shacl": "http://www.w3.org/ns/shacl#",
+    "fnml": "http://semweb.mmlab.be/ns/fnml#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "label": "rdfs:label",
+    "rdfs:subClassOf": {
+      "@type": "@id"
+    },
+    "rdfs:range": {
+      "@type": "@id"
+    },
+    "rdfs:domain": {
+      "@type": "@id"
+    },
+    "boolean": "http://www.w3.org/2001/XMLSchema#boolean",
+    "integer": "http://www.w3.org/2001/XMLSchema#integer",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "rr": "http://www.w3.org/ns/r2rml#",
+    "rml": "http://semweb.mmlab.be/ns/rml#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "dcterms": "http://purl.org/dc/elements/1.1/",
+    "description": "dcterms:description",
+    "shacl:class": {
+      "@type": "@id"
+    },
+    "shacl:datatype": {
+      "@type": "@id"
+    },
+    "shacl:maxCount": {
+      "@type": "xsd:integer"
+    },
+    "shacl:minCount": {
+      "@type": "xsd:integer"
+    },
+    "shacl:targetClass": {
+      "@type": "@id"
+    },
+    "shacl:path": {
+      "@type": "@id"
+    },
+    "dogm": "https://dogm.com/ontologies/core/",
+    "dogm:integration": {
+      "@type": "@id"
+    },
+    "dogm:account": {
+      "@type": "@id"
+    },
+    "dogm:openApiDescription": {
+      "@type": "@json"
+    },
+    "dogm:parametersContext": {
+      "@type": "@json"
+    },
+    "dogm:Noun": {
+      "@type": "@id"
+    },
+    "dogm:parameterMapping": {
+      "@type": "@id"
+    },
+    "dogm:parameterMappingFrame": {
+      "@type": "@json"
+    },
+    "dogm:returnValueMapping": {
+      "@type": "@id"
+    },
+    "dogm:operationMapping": {
+      "@type": "@id"
+    },
+    "dogm:verbMapping": {
+      "@type": "@id"
+    },
+    "integration": {
+      "@id": "dogm:integration",
+      "@type": "@id"
+    },
+    "verb": {
+      "@id": "dogm:verb",
+      "@type": "@id"
+    },
+    "rml:referenceFormulation": {
+      "@type": "@id"
+    },
+    "rr:parentTriplesMap": {
+      "@type": "@id"
+    },
+    "rr:predicate": {
+      "@type": "@id"
+    },
+    "rr:object": {
+      "@type": "@id"
+    },
+    "rr:termType": {
+      "@type": "@id"
+    },
+    "rr:datatype": {
+      "@type": "@id"
+    },
+    "rr:subject": {
+      "@type": "@id"
+    },
+    "example": "https://example.com/"
+  },
+  "@graph": [
+    {
+      "@id": "https://example.com/data/1234",
+      "@type": "https://dogm.com/ontologies/core/TriggerVerbMapping",
+      "dogm:integration": "https://example.com/integrations/Dropbox",
+      "dogm:parameterMapping": {
+        "@type": "rr:TriplesMap",
+        "rml:logicalSource": {
+          "@type": "rml:LogicalSource",
+          "rml:iterator": "$",
+          "rml:referenceFormulation": "http://semweb.mmlab.be/ns/ql#JSONPath",
+          "rml:source": "input.json"
+        },
+        "rr:predicateObjectMap": [
+          {
+            "@type": "rr:PredicateObjectMap",
+            "rr:object": "https://example.com/data/DropboxAccount1",
+            "rr:predicate": "example:account"
+          },
+          {
+            "@type": "rr:PredicateObjectMap",
+            "rr:objectMap": {
+              "@type": "rr:ObjectMap",
+              "rr:constant": ""
+            },
+            "rr:predicate": "example:path"
+          }
+        ],
+        "rr:subjectMap": {
+          "@type": "rr:SubjectMap",
+          "rr:termType": "rr:BlankNode"
+        }
+      },
+      "dogm:parameterMappingFrame": {
+        "@context": {
+          "account": "https://example.com/account",
+          "path": "https://example.com/path"
+        }
+      },
+      "dogm:verbMapping": {
+        "@type": "rr:TriplesMap",
+        "rml:logicalSource": {
+          "@type": "rml:LogicalSource",
+          "rml:iterator": "$",
+          "rml:referenceFormulation": "http://semweb.mmlab.be/ns/ql#JSONPath",
+          "rml:source": "input.json"
+        },
+        "rr:predicateObjectMap": [
+          {
+            "@type": "rr:PredicateObjectMap",
+            "rr:object": "https://example.com/getRootCursor",
+            "rr:predicate": "dogm:verbId"
+          }
+        ],
+        "rr:subjectMap": {
+          "@type": "rr:SubjectMap",
+          "rr:termType": "rr:BlankNode"
+        }
+      }
+    },
+    {
+      "@id": "https://example.com/getRootCursor",
+      "@type": "https://dogm.com/ontologies/core/Verb",
+      "label": "getFolderCursor",
+      "dogm:parametersContext": {
+        "path": {
+          "@id": "https://example.com/path",
+          "@type": "http://www.w3.org/2001/XMLSchema#string"
+        },
+        "account": {
+          "@id": "https://example.com/account",
+          "@type": "@id"
+        }
+      },
+      "dogm:parameters": {
+        "@type": "shacl:NodeShape",
+        "shacl:targetClass": "https://dogm.com/ontologies/core/Parameters",
+        "shacl:property": [
+          {
+            "shacl:datatype": "xsd:string",
+            "shacl:maxCount": 1,
+            "shacl:path": "https://example.com/path"
+          },
+          {
+            "shacl:maxCount": 1,
+            "shacl:minCount": 1,
+            "shacl:path": "https://example.com/account",
+            "shacl:nodeKind": {
+              "@id": "shacl:IRI"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://example.com/data/224",
+      "@type": "https://dogm.com/ontologies/core/VerbIntegrationMapping",
+      "verb": "https://example.com/getRootCursor",
+      "integration": "https://example.com/integrations/Dropbox",
+      "dogm:operationMapping": {
+        "@type": "rr:TriplesMap",
+        "rml:logicalSource": {
+          "@type": "rml:LogicalSource",
+          "rml:iterator": "$",
+          "rml:referenceFormulation": "http://semweb.mmlab.be/ns/ql#JSONPath",
+          "rml:source": "input.json"
+        },
+        "rr:predicateObjectMap": [
+          {
+            "@type": "rr:PredicateObjectMap",
+            "rr:objectMap": {
+              "@type": "rr:ObjectMap",
+              "rr:constant": "FilesListFolderGetLatestCursor"
+            },
+            "rr:predicate": "dogm:operationId"
+          }
+        ],
+        "rr:subjectMap": {
+          "@type": "rr:SubjectMap",
+          "rr:termType": "rr:BlankNode"
+        }
+      },
+      "dogm:parameterMapping": {
+        "@type": "rr:TriplesMap",
+        "rml:logicalSource": {
+          "@type": "rml:LogicalSource",
+          "rml:iterator": "$",
+          "rml:referenceFormulation": "http://semweb.mmlab.be/ns/ql#JSONPath",
+          "rml:source": "input.json"
+        },
+        "rr:predicateObjectMap": [
+          {
+            "@type": "rr:PredicateObjectMap",
+            "rr:objectMap": {
+              "@type": "rr:ObjectMap",
+              "rr:datatype": "xsd:string",
+              "rml:reference": "path"
+            },
+            "rr:predicate": "example:path"
+          }
+        ],
+        "rr:subjectMap": {
+          "@type": "rr:SubjectMap",
+          "rr:termType": "rr:BlankNode"
+        }
+      },
+      "dogm:parameterMappingFrame": {
+        "@context": {
+          "path": {
+            "@id": "https://example.com/path",
+            "@type": "http://www.w3.org/2001/XMLSchema#string"
+          }
+        }
+      }
+    }
+  ]
+}

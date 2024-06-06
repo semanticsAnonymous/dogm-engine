@@ -1,0 +1,479 @@
+{
+  "@context": {
+    "shacl": "http://www.w3.org/ns/shacl#",
+    "fnml": "http://semweb.mmlab.be/ns/fnml#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "label": "rdfs:label",
+    "rdfs:subClassOf": {
+      "@type": "@id"
+    },
+    "rdfs:range": {
+      "@type": "@id"
+    },
+    "rdfs:domain": {
+      "@type": "@id"
+    },
+    "boolean": "http://www.w3.org/2001/XMLSchema#boolean",
+    "integer": "http://www.w3.org/2001/XMLSchema#integer",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "rr": "http://www.w3.org/ns/r2rml#",
+    "rml": "http://semweb.mmlab.be/ns/rml#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "dcterms": "http://purl.org/dc/elements/1.1/",
+    "description": "dcterms:description",
+    "shacl:class": {
+      "@type": "@id"
+    },
+    "shacl:datatype": {
+      "@type": "@id"
+    },
+    "shacl:maxCount": {
+      "@type": "xsd:integer"
+    },
+    "shacl:minCount": {
+      "@type": "xsd:integer"
+    },
+    "shacl:targetClass": {
+      "@type": "@id"
+    },
+    "shacl:path": {
+      "@type": "@id"
+    },
+    "dogm": "https://dogm.com/ontologies/core/",
+    "dogm:integration": {
+      "@type": "@id"
+    },
+    "dogm:account": {
+      "@type": "@id"
+    },
+    "dogm:openApiDescription": {
+      "@type": "@json"
+    },
+    "dogm:parametersContext": {
+      "@type": "@json"
+    },
+    "dogm:returnValueFrame": {
+      "@type": "@json"
+    },
+    "dogm:Noun": {
+      "@type": "@id"
+    },
+    "dogm:parameterMapping": {
+      "@type": "@id"
+    },
+    "dogm:parameterMappingFrame": {
+      "@type": "@json"
+    },
+    "dogm:returnValueMapping": {
+      "@type": "@id"
+    },
+    "dogm:operationMapping": {
+      "@type": "@id"
+    },
+    "dogm:verbMapping": {
+      "@type": "@id"
+    },
+    "integration": {
+      "@id": "dogm:integration",
+      "@type": "@id"
+    },
+    "verb": {
+      "@id": "dogm:verb",
+      "@type": "@id"
+    },
+    "rml:referenceFormulation": {
+      "@type": "@id"
+    },
+    "rr:parentTriplesMap": {
+      "@type": "@id"
+    },
+    "rr:predicate": {
+      "@type": "@id"
+    },
+    "rr:object": {
+      "@type": "@id"
+    },
+    "rr:termType": {
+      "@type": "@id"
+    },
+    "rr:datatype": {
+      "@type": "@id"
+    },
+    "rr:subject": {
+      "@type": "@id"
+    },
+    "rr:class": {
+      "@type": "@id"
+    },
+    "example": "https://example.com/"
+  },
+  "@graph": [
+    {
+      "@id": "https://example.com/parseLinksAndCountCharactersFromEntity",
+      "@type": "https://dogm.com/ontologies/core/Verb",
+      "label": "parseLinksAndCountCharactersFromEntity",
+      "dogm:parametersContext": {
+        "entity": {
+          "@id": "https://example.com/entity",
+          "@type": "@id"
+        }
+      },
+      "dogm:parameters": {
+        "@type": "shacl:NodeShape",
+        "shacl:targetClass": "dogm:Parameters",
+        "shacl:property": [
+          {
+            "shacl:maxCount": 1,
+            "shacl:minCount": 1,
+            "shacl:path": "https://example.com/entity",
+            "shacl:name": "entity",
+            "shacl:nodeKind": {
+              "@id": "shacl:IRI"
+            }
+          }
+        ]
+      },
+      "dogm:returnValue": {
+        "@type": "shacl:NodeShape",
+        "shacl:closed": false,
+        "shacl:property": [
+          {
+            "shacl:name": "links",
+            "shacl:datatype": "xsd:string",
+            "shacl:path": "example:links"
+          },
+          {
+            "shacl:name": "length",
+            "shacl:datatype": "xsd:integer",
+            "shacl:path": "example:length"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://example.com/parseLinksAndCountCharactersFromEntityMapping",
+      "@type": "https://dogm.com/ontologies/core/CompositeMapping",
+      "verb": "https://example.com/parseLinksAndCountCharactersFromEntity",
+      "dogm:parallel": [
+        {
+          "dogm:parameterMapping": {
+            "@type": "rr:TriplesMap",
+            "rml:logicalSource": {
+              "@type": "rml:LogicalSource",
+              "rml:iterator": "$",
+              "rml:referenceFormulation": "http://semweb.mmlab.be/ns/ql#JSONPath",
+              "rml:source": "input.json"
+            },
+            "rr:subject": "https://example.com/mappingSubject",
+            "rr:predicateObjectMap": [
+              {
+                "@type": "rr:PredicateObjectMap",
+                "rr:objectMap": {
+                  "@type": "rr:ObjectMap",
+                  "rr:datatype": "http://www.w3.org/2001/XMLSchema#string",
+                  "rml:reference": "entity[`@type]"
+                },
+                "rr:predicate": "example:noun"
+              },
+              {
+                "@type": "rr:PredicateObjectMap",
+                "rr:objectMap": {
+                  "@type": "rr:ObjectMap",
+                  "rml:reference": "entity"
+                },
+                "rr:predicate": "example:entity"
+              }
+            ]
+          },
+          "dogm:parameterMappingFrame": {
+            "@context": {
+              "noun": {
+                "@id": "https://example.com/noun",
+                "@type": "http://www.w3.org/2001/XMLSchema#string"
+              },
+              "entity": {
+                "@id": "https://example.com/entity",
+                "@type": "@id"
+              }
+            },
+            "@id": "https://example.com/mappingSubject"
+          },
+          "dogm:verbMapping": {
+            "@type": "rr:TriplesMap",
+            "rml:logicalSource": {
+              "@type": "rml:LogicalSource",
+              "rml:iterator": "$",
+              "rml:referenceFormulation": "http://semweb.mmlab.be/ns/ql#JSONPath",
+              "rml:source": "input.json"
+            },
+            "rr:predicateObjectMap": [
+              {
+                "@type": "rr:PredicateObjectMap",
+                "rr:object": "https://example.com/getTextBody",
+                "rr:predicate": "dogm:verbId"
+              }
+            ],
+            "rr:subjectMap": {
+              "@type": "rr:SubjectMap",
+              "rr:termType": "rr:BlankNode"
+            }
+          },
+          "dogm:returnValueMapping": {
+            "@type": "rr:TriplesMap",
+            "rml:logicalSource": {
+              "@type": "rml:LogicalSource",
+              "rml:iterator": "$",
+              "rml:referenceFormulation": "http://semweb.mmlab.be/ns/ql#JSONPath",
+              "rml:source": "input.json"
+            },
+            "rr:predicateObjectMap": [
+              {
+                "@type": "rr:PredicateObjectMap",
+                "rr:predicate": "example:links",
+                "rr:objectMap": {
+                  "@type": "rr:ObjectMap",
+                  "rr:datatype": "xsd:string",
+                  "fnml:functionValue": {
+                    "@type": "fnml:FunctionValue",
+                    "rr:predicateObjectMap": [
+                      {
+                        "@type": "rr:PredicateObjectMap",
+                        "rr:object": "https://example.com/functions/parseLinksFromText",
+                        "rr:predicate": "https://w3id.org/function/ontology#executes"
+                      },
+                      {
+                        "@type": "rr:PredicateObjectMap",
+                        "rr:predicate": "https://example.com/functions/text",
+                        "rr:objectMap": {
+                          "@type": "rr:ObjectMap",
+                          "rml:reference": "text"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ],
+            "rr:subjectMap": {
+              "@type": "rr:SubjectMap",
+              "rr:class": "https://example.com/LinksObject",
+              "rr:termType": "rr:BlankNode"
+            }
+          },
+          "dogm:returnValueFrame": {
+            "@context": {
+              "links": {
+                "@id": "https://example.com/links",
+                "@type": "http://www.w3.org/2001/XMLSchema#string",
+                "@container": "@set"
+              }
+            }
+          }
+        },
+        {
+          "dogm:parameterMapping": {
+            "@type": "rr:TriplesMap",
+            "rml:logicalSource": {
+              "@type": "rml:LogicalSource",
+              "rml:iterator": "$",
+              "rml:referenceFormulation": "http://semweb.mmlab.be/ns/ql#JSONPath",
+              "rml:source": "input.json"
+            },
+            "rr:subject": "https://example.com/mappingSubject",
+            "rr:predicateObjectMap": [
+              {
+                "@type": "rr:PredicateObjectMap",
+                "rr:objectMap": {
+                  "@type": "rr:ObjectMap",
+                  "rr:datatype": "http://www.w3.org/2001/XMLSchema#string",
+                  "rml:reference": "entity[`@type]"
+                },
+                "rr:predicate": "example:noun"
+              },
+              {
+                "@type": "rr:PredicateObjectMap",
+                "rr:objectMap": {
+                  "@type": "rr:ObjectMap",
+                  "rml:reference": "entity"
+                },
+                "rr:predicate": "example:entity"
+              }
+            ]
+          },
+          "dogm:parameterMappingFrame": {
+            "@context": {
+              "noun": {
+                "@id": "https://example.com/noun",
+                "@type": "http://www.w3.org/2001/XMLSchema#string"
+              },
+              "entity": {
+                "@id": "https://example.com/entity",
+                "@type": "@id"
+              }
+            },
+            "@id": "https://example.com/mappingSubject"
+          },
+          "dogm:verbMapping": {
+            "@type": "rr:TriplesMap",
+            "rml:logicalSource": {
+              "@type": "rml:LogicalSource",
+              "rml:iterator": "$",
+              "rml:referenceFormulation": "http://semweb.mmlab.be/ns/ql#JSONPath",
+              "rml:source": "input.json"
+            },
+            "rr:predicateObjectMap": [
+              {
+                "@type": "rr:PredicateObjectMap",
+                "rr:object": "https://example.com/getTextBody",
+                "rr:predicate": "dogm:verbId"
+              }
+            ],
+            "rr:subjectMap": {
+              "@type": "rr:SubjectMap",
+              "rr:termType": "rr:BlankNode"
+            }
+          },
+          "dogm:returnValueMapping": {
+            "@type": "rr:TriplesMap",
+            "rml:logicalSource": {
+              "@type": "rml:LogicalSource",
+              "rml:iterator": "$",
+              "rml:referenceFormulation": "http://semweb.mmlab.be/ns/ql#JSONPath",
+              "rml:source": "input.json"
+            },
+            "rr:predicateObjectMap": [
+              {
+                "@type": "rr:PredicateObjectMap",
+                "rr:predicate": "example:length",
+                "rr:objectMap": {
+                  "@type": "rr:ObjectMap",
+                  "rr:datatype": "xsd:integer",
+                  "fnml:functionValue": {
+                    "@type": "fnml:FunctionValue",
+                    "rr:predicateObjectMap": [
+                      {
+                        "@type": "rr:PredicateObjectMap",
+                        "rr:object": "http://users.ugent.be/~bjdmeest/function/grel.ttl#string_length",
+                        "rr:predicate": "https://w3id.org/function/ontology#executes"
+                      },
+                      {
+                        "@type": "rr:PredicateObjectMap",
+                        "rr:predicate": "http://users.ugent.be/~bjdmeest/function/grel.ttl#valueParameter",
+                        "rr:objectMap": {
+                          "@type": "rr:ObjectMap",
+                          "rml:reference": "text"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ],
+            "rr:subjectMap": {
+              "@type": "rr:SubjectMap",
+              "rr:class": "https://example.com/MeasurementObject",
+              "rr:termType": "rr:BlankNode"
+            }
+          },
+          "dogm:returnValueFrame": {
+            "@context": {
+              "length": {
+                "@id": "https://example.com/length",
+                "@type": "http://www.w3.org/2001/XMLSchema#integer"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://example.com/getTextBody",
+      "@type": "https://dogm.com/ontologies/core/Verb",
+      "label": "getTextBody",
+      "dogm:parametersContext": {
+        "entity": {
+          "@id": "https://example.com/entity",
+          "@type": "@id"
+        },
+        "noun": {
+          "@id": "https://example.com/noun",
+          "@type": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      },
+      "dogm:parameters": {
+        "@type": "shacl:NodeShape",
+        "shacl:targetClass": "dogm:Parameters",
+        "shacl:property": [
+          {
+            "shacl:maxCount": 1,
+            "shacl:minCount": 1,
+            "shacl:path": "https://example.com/entity",
+            "shacl:name": "entity",
+            "shacl:nodeKind": {
+              "@id": "shacl:IRI"
+            }
+          },
+          {
+            "shacl:maxCount": 1,
+            "shacl:minCount": 1,
+            "shacl:path": "https://example.com/noun",
+            "shacl:name": "noun"
+          }
+        ]
+      },
+      "dogm:returnValue": {
+        "@type": "shacl:NodeShape",
+        "shacl:closed": false,
+        "shacl:property": [
+          {
+            "shacl:maxCount": 1,
+            "shacl:minCount": 1,
+            "shacl:name": "text",
+            "shacl:path": "https://example.com/text"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://example.com/data/34",
+      "@type": "https://dogm.com/ontologies/core/VerbNounMapping",
+      "verb": "https://example.com/getTextBody",
+      "dogm:Noun": "https://schema.org/BlogPosting",
+      "label": "getTextBodyToBlogPosting",
+      "dogm:returnValueMapping": {
+        "@type": "rr:TriplesMap",
+        "rml:logicalSource": {
+          "@type": "rml:LogicalSource",
+          "rml:iterator": "$",
+          "rml:referenceFormulation": "http://semweb.mmlab.be/ns/ql#JSONPath",
+          "rml:source": "input.json"
+        },
+        "rr:predicateObjectMap": [
+          {
+            "@type": "rr:PredicateObjectMap",
+            "rr:predicate": "example:text",
+            "rr:objectMap": {
+              "@type": "rr:ObjectMap",
+              "rr:datatype": "xsd:string",
+              "rml:reference": "entity['https://schema.org/articleBody'][`@value]"
+            }
+          }
+        ],
+        "rr:subjectMap": {
+          "@type": "rr:SubjectMap",
+          "rr:termType": "rr:BlankNode"
+        }
+      },
+      "dogm:returnValueFrame": {
+        "@context": {
+          "text": {
+            "@id": "https://example.com/text",
+            "@type": "http://www.w3.org/2001/XMLSchema#string"
+          }
+        }
+      }
+    }
+  ]
+}

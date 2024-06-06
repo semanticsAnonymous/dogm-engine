@@ -1,0 +1,11 @@
+.npmrc
+.eslintcache
+dist
+.DS_Store
+node_modules/
+coverage/
+yarn-error.log*
+rmlmapper-5.0.0-r362-all.jar
+tmp
+dogm-engine-*.tgz
+test/deploy/package-lock.json

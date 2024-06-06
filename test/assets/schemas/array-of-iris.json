@@ -1,0 +1,53 @@
+{
+  "@context": {
+    "shacl": "http://www.w3.org/ns/shacl#",
+    "fnml": "http://semweb.mmlab.be/ns/fnml#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "label": "rdfs:label",
+    "boolean": "http://www.w3.org/2001/XMLSchema#boolean",
+    "integer": "http://www.w3.org/2001/XMLSchema#integer",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "rr": "http://www.w3.org/ns/r2rml#",
+    "rml": "http://semweb.mmlab.be/ns/rml#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rml:referenceFormulation": { "@type": "@id" },
+    "rr:predicate": { "@type": "@id" },
+    "rr:subject": { "@type": "@id" },
+    "rr:object": { "@type": "@id" },
+    "rr:termType": { "@type": "@id" },
+    "example": "https://example.com/"
+  },
+  "@graph": [
+    {
+      "@id": "https://example.com/mapping",
+      "@type": "rr:TriplesMap",
+      "rml:logicalSource": {
+        "@type": "rml:LogicalSource",
+        "rml:iterator": "$",
+        "rml:referenceFormulation": "http://semweb.mmlab.be/ns/ql#JSONPath",
+        "rml:source": "input.json"
+      },
+      "rr:predicateObjectMap": [
+        {
+          "@type": "rr:PredicateObjectMap",
+          "rr:objectMap": {
+            "@type": "rr:ObjectMap",
+            "rr:termType": "rr:IRI",
+            "rr:constant": "https://example.com/integrations/Dropbox"
+          },
+          "rr:predicate": "example:integration"
+        },
+        {
+          "@type": "rr:PredicateObjectMap",
+          "rr:objectMap": {
+            "@type": "rr:ObjectMap",
+            "rr:termType": "rr:IRI",
+            "rr:constant": "https://example.com/integrations/AirTable"
+          },
+          "rr:predicate": "example:integration"
+        }
+      ],
+      "rr:subject": "https://example.com/mappingSubject"
+    }
+  ]
+}

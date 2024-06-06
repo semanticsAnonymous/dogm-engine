@@ -1,0 +1,2156 @@
+{
+  "@context": {
+    "shacl": "http://www.w3.org/ns/shacl#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "label": "rdfs:label",
+    "dcterms": "http://purl.org/dc/elements/1.1/",
+    "description": "dcterms:description",
+    "rdfs:subClassOf": {
+      "@type": "@id"
+    },
+    "schema": "https://schema.org/",
+    "schema:rangeIncludes": {
+      "@type": "@id"
+    },
+    "schema:domainIncludes": {
+      "@type": "@id"
+    },
+    "boolean": "http://www.w3.org/2001/XMLSchema#boolean",
+    "integer": "http://www.w3.org/2001/XMLSchema#integer",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "rr": "http://www.w3.org/ns/r2rml#",
+    "rml": "http://semweb.mmlab.be/ns/rml#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "dogm": "https://dogm.com/ontologies/core/",
+    "fnml": "http://semweb.mmlab.be/ns/fnml#",
+    "shacl:path": {
+      "@type": "@id"
+    },
+    "shacl:or": {
+      "@container": "@list"
+    },
+    "shacl:class": {
+      "@type": "@id"
+    },
+    "shacl:nodeKind": {
+      "@type": "@id"
+    },
+    "shacl:datatype": {
+      "@type": "@id"
+    },
+    "shacl:maxCount": {
+      "@type": "xsd:integer"
+    },
+    "shacl:minCount": {
+      "@type": "xsd:integer"
+    },
+    "dogm:context": {
+      "@type": "@json"
+    },
+    "rdfs:range": {
+      "@id": "rdfs:range",
+      "@type": "@id"
+    },
+    "rdfs:domain": {
+      "@id": "rdfs:domain",
+      "@type": "@id"
+    },
+    "dogm:deduplicationRequiredFields": {
+      "@type": "@json"
+    },
+    "dogm:deduplicatedEntityRelations": {
+      "@type": "@json"
+    },
+    "dogm:indexedEntityRelations": {
+      "@type": "@json"
+    },
+    "dogm:indexForSemanticSearch": {
+      "@type": "xsd:boolean"
+    }
+  },
+  "@graph": [
+    {
+      "@id": "https://schema.org/Place",
+      "@type": [
+        "rdfs:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "label": "Place",
+      "rdfs:subClassOf": [
+        "dogm:SyncedEntity",
+        "dogm:IndexableEntity",
+        "dogm:DeduplicatableEntity"
+      ],
+      "dogm:indexForSemanticSearch": true,
+      "dogm:deduplicationMethod": "https://dogm.com/ontologies/core/vectorComparison",
+      "dogm:deduplicationDistanceThreshold": "0.174",
+      "dogm:deduplicationRecommendationDistanceThreshold": "0.305",
+      "dogm:deduplicationRequiredFields": {
+        "https://schema.org/address": [
+          "https://schema.org/addressCountry",
+          "https://schema.org/addressRegion"
+        ]
+      },
+      "dogm:deduplicatedEntityRelations": {
+        "https://schema.org/category": true
+      },
+      "description": "Entities that have a somewhat fixed, physical extension.",
+      "shacl:closed": false,
+      "shacl:property": [
+        {
+          "shacl:maxCount": 1,
+          "shacl:datatype": "xsd:string",
+          "shacl:path": "https://schema.org/name"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:datatype": "xsd:string",
+          "shacl:path": "https://schema.org/identifier"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:datatype": "xsd:string",
+          "shacl:path": "https://schema.org/url",
+          "shacl:name": "url"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:datatype": "xsd:string",
+          "shacl:path": "https://schema.org/mainEntityOfPage",
+          "shacl:name": "mainEntityOfPage"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:datatype": "xsd:string",
+          "shacl:path": "https://schema.org/telephone",
+          "shacl:name": "telephone"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:datatype": "xsd:string",
+          "shacl:path": "https://schema.org/email",
+          "shacl:name": "email"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:datatype": "xsd:string",
+          "shacl:path": "https://schema.org/description",
+          "shacl:name": "description"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:datatype": "xsd:string",
+          "shacl:path": "https://schema.org/latitude",
+          "shacl:name": "latitude"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:datatype": "xsd:string",
+          "shacl:path": "https://schema.org/longitude",
+          "shacl:name": "longitude"
+        },
+        {
+          "shacl:nodeKind": "shacl:BlankNode",
+          "shacl:path": "https://schema.org/image"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:class": "https://schema.org/PostalAddress",
+          "shacl:nodeKind": "shacl:BlankNode",
+          "shacl:path": "https://schema.org/address",
+          "shacl:node": {
+            "@type": "shacl:NodeShape",
+            "shacl:closed": false,
+            "shacl:property": [
+              {
+                "shacl:maxCount": 1,
+                "shacl:datatype": "xsd:string",
+                "shacl:path": "https://schema.org/streetAddress"
+              },
+              {
+                "shacl:maxCount": 1,
+                "shacl:datatype": "xsd:string",
+                "shacl:path": "https://schema.org/postalCode"
+              },
+              {
+                "shacl:maxCount": 1,
+                "shacl:datatype": "xsd:string",
+                "shacl:path": "https://schema.org/postOfficeBoxNumber"
+              },
+              {
+                "shacl:maxCount": 1,
+                "shacl:datatype": "xsd:string",
+                "shacl:path": "https://schema.org/addressRegion"
+              },
+              {
+                "shacl:maxCount": 1,
+                "shacl:datatype": "xsd:string",
+                "shacl:path": "https://schema.org/addressLocality"
+              },
+              {
+                "shacl:maxCount": 1,
+                "shacl:datatype": "xsd:string",
+                "shacl:path": "https://schema.org/addressCountry"
+              }
+            ]
+          }
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:nodeKind": "shacl:BlankNode",
+          "shacl:class": "https://schema.org/AggregateRating",
+          "shacl:path": "https://schema.org/aggregateRating",
+          "shacl:name": "aggregateRating",
+          "shacl:node": {
+            "@type": "shacl:NodeShape",
+            "shacl:closed": false,
+            "shacl:property": [
+              {
+                "shacl:maxCount": 1,
+                "shacl:datatype": "xsd:integer",
+                "shacl:path": "https://schema.org/reviewCount"
+              },
+              {
+                "shacl:maxCount": 1,
+                "shacl:datatype": "xsd:double",
+                "shacl:path": "https://schema.org/ratingValue"
+              }
+            ]
+          }
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:datatype": "xsd:string",
+          "shacl:path": "https://schema.org/starRating"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:datatype": "xsd:string",
+          "shacl:path": "https://schema.org/priceRange"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:datatype": "xsd:boolean",
+          "shacl:path": "https://schema.org/acceptsReservations"
+        },
+        {
+          "shacl:datatype": "xsd:string",
+          "shacl:path": "https://schema.org/openingHours"
+        },
+        {
+          "shacl:path": "https://schema.org/category",
+          "shacl:nodeKind": "shacl:IRI"
+        },
+        {
+          "shacl:datatype": "xsd:string",
+          "shacl:path": "https://schema.org/hasMenu",
+          "shacl:name": "hasMenu"
+        },
+        {
+          "shacl:nodeKind": "shacl:BlankNode",
+          "shacl:path": "https://schema.org/potentialAction",
+          "shacl:node": {
+            "@type": "shacl:NodeShape",
+            "shacl:closed": false,
+            "shacl:property": [
+              {
+                "shacl:datatype": "xsd:string",
+                "shacl:path": "https://schema.org/target"
+              }
+            ]
+          }
+        }
+      ],
+      "dogm:context": {
+        "updatedAt": {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@id": "http://purl.org/dc/terms/modified"
+        },
+        "createdAt": {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@id": "http://purl.org/dc/terms/created"
+        },
+        "sourceId": {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@id": "https://dogm.com/ontologies/core/sourceId"
+        },
+        "integration": {
+          "@id": "https://dogm.com/ontologies/core/integration",
+          "@type": "@id"
+        },
+        "deduplicationGroup": {
+          "@id": "https://dogm.com/ontologies/core/deduplicationGroup",
+          "@type": "@id"
+        },
+        "name": {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@id": "https://schema.org/name"
+        },
+        "identifier": {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@id": "https://schema.org/identifier"
+        },
+        "url": {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@id": "https://schema.org/url"
+        },
+        "mainEntityOfPage": {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@id": "https://schema.org/mainEntityOfPage"
+        },
+        "description": {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@id": "https://schema.org/description"
+        },
+        "telephone": {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@id": "https://schema.org/telephone"
+        },
+        "address": {
+          "@type": "@id",
+          "@id": "https://schema.org/address"
+        },
+        "email": {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@id": "https://schema.org/email"
+        },
+        "latitude": {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@id": "https://schema.org/latitude"
+        },
+        "longitude": {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@id": "https://schema.org/longitude"
+        },
+        "streetAddress": {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@id": "https://schema.org/streetAddress"
+        },
+        "postalCode": {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@id": "https://schema.org/postalCode"
+        },
+        "postOfficeBoxNumber": {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@id": "https://schema.org/postOfficeBoxNumber"
+        },
+        "addressRegion": {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@id": "https://schema.org/addressRegion"
+        },
+        "addressLocality": {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@id": "https://schema.org/addressLocality"
+        },
+        "addressCountry": {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@id": "https://schema.org/addressCountry"
+        },
+        "images": {
+          "@id": "https://schema.org/image",
+          "@type": "@id",
+          "@container": "@set"
+        },
+        "hasMenu": {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@id": "https://schema.org/hasMenu"
+        },
+        "priceRange": {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@id": "https://schema.org/priceRange"
+        },
+        "starRating": {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@id": "https://schema.org/starRating"
+        },
+        "aggregateRating": {
+          "@type": "@id",
+          "@id": "https://schema.org/aggregateRating"
+        },
+        "ratingValue": {
+          "@type": "http://www.w3.org/2001/XMLSchema#double",
+          "@id": "https://schema.org/ratingValue"
+        },
+        "reviewCount": {
+          "@type": "http://www.w3.org/2001/XMLSchema#integer",
+          "@id": "https://schema.org/reviewCount"
+        },
+        "acceptsReservations": {
+          "@type": "http://www.w3.org/2001/XMLSchema#boolean",
+          "@id": "https://schema.org/acceptsReservations"
+        },
+        "openingHours": {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@id": "https://schema.org/openingHours",
+          "@container": "@set"
+        },
+        "categories": {
+          "@type": "@id",
+          "@id": "https://schema.org/category",
+          "@container": "@set"
+        },
+        "potentialAction": {
+          "@type": "@id",
+          "@id": "https://schema.org/potentialAction",
+          "@container": "@set"
+        },
+        "target": {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@id": "https://schema.org/target"
+        }
+      }
+    },
+    {
+      "@id": "dogm:Entity",
+      "@type": [
+        "rdfs:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "label": "Entity",
+      "shacl:closed": false,
+      "shacl:property": [
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "rdfs:label",
+          "shacl:datatype": "xsd:string"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "dcterms:description",
+          "shacl:datatype": "xsd:string"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "http://purl.org/dc/terms/created",
+          "shacl:datatype": "xsd:dateTime"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "http://purl.org/dc/terms/modified",
+          "shacl:datatype": "xsd:dateTime"
+        }
+      ]
+    },
+    {
+      "@id": "rdf:Property",
+      "@type": [
+        "rdfs:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "label": "Property",
+      "rdfs:subClassOf": "dogm:Entity",
+      "shacl:closed": false,
+      "shacl:property": [
+        {
+          "shacl:path": "rdfs:range",
+          "shacl:nodeKind": "shacl:IRI"
+        },
+        {
+          "shacl:path": "rdfs:domain",
+          "shacl:nodeKind": "shacl:IRI"
+        }
+      ]
+    },
+    {
+      "@id": "dogm:SyncedEntity",
+      "@type": [
+        "rdfs:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "label": "SyncedEntity",
+      "rdfs:subClassOf": "dogm:Entity",
+      "shacl:closed": false,
+      "shacl:property": [
+        {
+          "shacl:maxCount": 1,
+          "shacl:minCount": 1,
+          "shacl:path": "dogm:sourceId"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:minCount": 1,
+          "shacl:nodeKind": "shacl:IRI",
+          "shacl:path": "dogm:integration"
+        }
+      ]
+    },
+    {
+      "@id": "dogm:IndexableEntity",
+      "@type": [
+        "rdfs:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "label": "IndexableEntity",
+      "rdfs:subClassOf": "dogm:Entity",
+      "shacl:closed": false,
+      "shacl:property": [
+        {
+          "shacl:maxCount": 1,
+          "shacl:datatype": "xsd:string",
+          "shacl:path": "dogm:semanticSearchId"
+        }
+      ]
+    },
+    {
+      "@id": "dogm:DeduplicatableEntity",
+      "@type": [
+        "rdfs:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "label": "DeduplicatableEntity",
+      "rdfs:subClassOf": "dogm:Entity",
+      "shacl:closed": false,
+      "shacl:property": [
+        {
+          "shacl:maxCount": 1,
+          "shacl:nodeKind": "shacl:IRI",
+          "shacl:path": "dogm:deduplicationGroup"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:datatype": "xsd:string",
+          "shacl:path": "dogm:deduplicationId"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:datatype": "rdf:JSON",
+          "shacl:path": "dogm:deduplicationValue"
+        }
+      ]
+    },
+    {
+      "@id": "dogm:Account",
+      "@type": [
+        "rdfs:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "label": "Account",
+      "rdfs:subClassOf": "dogm:Entity",
+      "shacl:closed": false,
+      "shacl:property": [
+        {
+          "shacl:minCount": 1,
+          "shacl:maxCount": 1,
+          "shacl:nodeKind": "shacl:IRI",
+          "shacl:path": "dogm:integration"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "https://schema.org/email"
+        },
+        {
+          "shacl:path": "dogm:syncStepConfiguration",
+          "shacl:class": "dogm:SyncStepConfiguration"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "dogm:overrideBasePath",
+          "shacl:datatype": "xsd:string"
+        }
+      ]
+    },
+    {
+      "@id": "dogm:SecurityCredentials",
+      "@type": [
+        "rdfs:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "label": "Security Credentials",
+      "rdfs:subClassOf": "dogm:Entity",
+      "shacl:closed": false,
+      "shacl:property": [
+        {
+          "shacl:minCount": 1,
+          "shacl:nodeKind": "shacl:IRI",
+          "shacl:path": "dogm:account"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "dogm:bearerToken",
+          "shacl:datatype": "xsd:string"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "dogm:apiKey",
+          "shacl:datatype": "xsd:string"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "dogm:clientId",
+          "shacl:datatype": "xsd:string"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "dogm:clientSecret",
+          "shacl:datatype": "xsd:string"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "dogm:accessToken",
+          "shacl:datatype": "xsd:string"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "dogm:jwtBearerOptions",
+          "shacl:datatype": "rdf:JSON"
+        }
+      ]
+    },
+    {
+      "@id": "dogm:Integration",
+      "@type": [
+        "rdfs:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "label": "Integration",
+      "rdfs:subClassOf": "dogm:Entity",
+      "shacl:closed": false,
+      "shacl:property": [
+        {
+          "shacl:maxCount": 1,
+          "shacl:minCount": 1,
+          "shacl:path": "rdfs:label",
+          "shacl:datatype": "xsd:string"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "dcterms:description",
+          "shacl:datatype": "xsd:string"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "dogm:invalidTokenErrorMatcher",
+          "shacl:class": "dogm:InvalidTokenErrorMatcher"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "dogm:disableIntraIntegrationDeduplication",
+          "shacl:datatype": "xsd:boolean"
+        }
+      ]
+    },
+    {
+      "@id": "dogm:Mapping",
+      "@type": [
+        "rdfs:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "label": "Mapping",
+      "rdfs:subClassOf": "dogm:Entity",
+      "shacl:closed": false,
+      "shacl:property": [
+        {
+          "shacl:class": "rr:TriplesMap",
+          "shacl:nodeKind": "shacl:BlankNode",
+          "shacl:path": "dogm:preProcessingMapping"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "dogm:preProcessingMappingFrame",
+          "shacl:datatype": "rdf:JSON"
+        },
+        {
+          "shacl:class": "rr:TriplesMap",
+          "shacl:nodeKind": "shacl:BlankNode",
+          "shacl:path": "dogm:parameterMapping"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "dogm:parameterMappingFrame",
+          "shacl:datatype": "rdf:JSON"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:datatype": "xsd:string",
+          "shacl:path": "dogm:parameterReference"
+        },
+        {
+          "shacl:class": "rr:TriplesMap",
+          "shacl:nodeKind": "shacl:BlankNode",
+          "shacl:path": "dogm:verbMapping"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:datatype": "xsd:string",
+          "shacl:path": "dogm:verbId"
+        },
+        {
+          "shacl:class": "rr:TriplesMap",
+          "shacl:nodeKind": "shacl:BlankNode",
+          "shacl:path": "dogm:returnValueMapping"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "dogm:returnValueFrame",
+          "shacl:datatype": "rdf:JSON"
+        }
+      ]
+    },
+    {
+      "@id": "dogm:Noun",
+      "@type": [
+        "rdfs:Class",
+        "shacl:NodeShape"
+      ],
+      "label": "Noun",
+      "rdfs:subClassOf": "dogm:Entity",
+      "shacl:closed": false,
+      "shacl:property": [
+        {
+          "shacl:maxCount": 1,
+          "shacl:minCount": 1,
+          "shacl:path": "rdfs:label",
+          "shacl:datatype": "xsd:string"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "dcterms:description",
+          "shacl:datatype": "xsd:string"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "dogm:context",
+          "shacl:datatype": "rdf:JSON"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "dogm:indexForSemanticSearch",
+          "shacl:datatype": "xsd:boolean"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "dogm:deduplicationMethod",
+          "shacl:datatype": "xsd:string"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "dogm:deduplicationDistanceThreshold",
+          "shacl:datatype": "xsd:string"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "dogm:deduplicationRecommendationDistanceThreshold",
+          "shacl:datatype": "xsd:string"
+        },
+        {
+          "shacl:path": "dogm:deduplicationRelationshipFilter",
+          "shacl:datatype": "xsd:string"
+        },
+        {
+          "shacl:path": "dogm:deduplicationRequiredFields",
+          "shacl:datatype": "rdf:JSON"
+        },
+        {
+          "shacl:path": "dogm:deduplicatedEntityRelations",
+          "shacl:datatype": "rdf:JSON"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "dogm:indexedEntityRelations",
+          "shacl:datatype": "rdf:JSON"
+        }
+      ]
+    },
+    {
+      "@id": "dogm:SecurityCredentials",
+      "@type": [
+        "rdfs:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "label": "Security Credentials",
+      "rdfs:subClassOf": "dogm:Entity",
+      "shacl:closed": false,
+      "shacl:property": [
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "dogm:refreshToken"
+        },
+        {
+          "shacl:minCount": 1,
+          "shacl:nodeKind": "shacl:IRI",
+          "shacl:path": "dogm:account"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "dogm:accessToken"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "dogm:apiKey"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "dogm:clientId"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "dogm:clientSecret"
+        }
+      ]
+    },
+    {
+      "@id": "dogm:OpenApiDescription",
+      "@type": [
+        "rdfs:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "label": "OpenApiDescription",
+      "rdfs:subClassOf": "dogm:Entity",
+      "shacl:closed": false,
+      "shacl:property": [
+        {
+          "shacl:maxCount": 1,
+          "shacl:nodeKind": "shacl:IRI",
+          "shacl:path": "dogm:integration"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "dogm:openApiDescription"
+        }
+      ]
+    },
+    {
+      "@id": "dogm:TokenPaginatedCollection",
+      "@type": [
+        "rdfs:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "label": "Token Paginated Collection",
+      "rdfs:subClassOf": "dogm:Collection",
+      "shacl:closed": false,
+      "shacl:property": [
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "dogm:nextPageToken",
+          "shacl:datatype": "xsd:string"
+        }
+      ]
+    },
+    {
+      "@id": "dogm:PaginatedCollection",
+      "@type": [
+        "rdfs:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "label": "Paginated Collection",
+      "rdfs:subClassOf": "dogm:Collection",
+      "shacl:closed": false,
+      "shacl:property": [
+        {
+          "shacl:maxCount": 1,
+          "shacl:minCount": 1,
+          "shacl:path": "dogm:page",
+          "shacl:datatype": "xsd:integer"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:minCount": 1,
+          "shacl:path": "dogm:hasNextPage",
+          "shacl:datatype": "xsd:boolean"
+        }
+      ]
+    },
+    {
+      "@id": "dogm:Collection",
+      "@type": [
+        "rdfs:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "label": "Collection",
+      "rdfs:subClassOf": "dogm:Entity",
+      "shacl:closed": false,
+      "shacl:property": [
+        {
+          "shacl:nodeKind": "shacl:BlankNodeOrIRI",
+          "shacl:name": "records",
+          "shacl:path": "dogm:records"
+        },
+        {
+          "shacl:nodeKind": "shacl:BlankNodeOrIRI",
+          "shacl:name": "linkedRecords",
+          "shacl:path": "dogm:linkedRecords"
+        }
+      ]
+    },
+    {
+      "@id": "dogm:RecommendedDeduplication",
+      "@type": [
+        "rdfs:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "label": "RecommendedDeduplication",
+      "rdfs:subClassOf": "dogm:Entity",
+      "description": "A record indicating a suggestion that two entities should be deduplicated.",
+      "shacl:closed": false,
+      "shacl:property": [
+        {
+          "shacl:minCount": 2,
+          "shacl:maxCount": 2,
+          "shacl:nodeKind": "shacl:IRI",
+          "shacl:path": "dogm:entity"
+        },
+        {
+          "shacl:minCount": 1,
+          "shacl:maxCount": 1,
+          "shacl:path": "dogm:score",
+          "shacl:datatype": "xsd:double"
+        },
+        {
+          "shacl:minCount": 1,
+          "shacl:maxCount": 1,
+          "shacl:path": "dogm:status",
+          "shacl:datatype": "xsd:string"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "dogm:chosenDeduplicationGroup",
+          "shacl:nodeKind": "shacl:IRI"
+        },
+        {
+          "shacl:path": "dogm:deletedDeduplicationGroup",
+          "shacl:nodeKind": "shacl:IRI"
+        }
+      ],
+      "dogm:context": {
+        "entities": {
+          "@container": "@set",
+          "@type": "@id",
+          "@id": "https://dogm.com/ontologies/core/entity"
+        },
+        "score": {
+          "@type": "http://www.w3.org/2001/XMLSchema#double",
+          "@id": "https://dogm.com/ontologies/core/score"
+        },
+        "status": {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@id": "https://dogm.com/ontologies/core/status"
+        }
+      }
+    },
+    {
+      "@id": "dogm:Verb",
+      "@type": [
+        "rdfs:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "label": "Verb",
+      "rdfs:subClassOf": "dogm:Entity",
+      "shacl:closed": false,
+      "shacl:property": [
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "dogm:returnValue",
+          "shacl:or": [
+            {
+              "shacl:class": "shacl:NodeShape"
+            },
+            {
+              "shacl:nodeKind": "shacl:IRI"
+            }
+          ]
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:datatype": "xsd:boolean",
+          "shacl:path": "dogm:indexAsChatbotTool"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:datatype": "rdf:JSON",
+          "shacl:path": "dogm:returnValueFrame"
+        },
+        {
+          "shacl:class": "shacl:NodeShape",
+          "shacl:maxCount": 1,
+          "shacl:nodeKind": "shacl:BlankNode",
+          "shacl:path": "dogm:parameters"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:datatype": "rdf:JSON",
+          "shacl:path": "dogm:parametersContext"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:minCount": 1,
+          "shacl:path": "rdfs:label"
+        }
+      ]
+    },
+    {
+      "@id": "dogm:VerbIntegrationMapping",
+      "@type": [
+        "rdfs:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "label": "Verb to Integration Mapping",
+      "rdfs:subClassOf": "dogm:Mapping",
+      "shacl:closed": false,
+      "shacl:property": [
+        {
+          "shacl:maxCount": 1,
+          "shacl:minCount": 1,
+          "shacl:nodeKind": "shacl:IRI",
+          "shacl:path": "dogm:verb"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:minCount": 1,
+          "shacl:nodeKind": "shacl:IRI",
+          "shacl:path": "dogm:integration"
+        },
+        {
+          "shacl:class": "rr:TriplesMap",
+          "shacl:nodeKind": "shacl:BlankNode",
+          "shacl:path": "dogm:operationMapping"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:datatype": "xsd:string",
+          "shacl:path": "dogm:operationId"
+        }
+      ]
+    },
+    {
+      "@id": "dogm:CompositeVerbMapping",
+      "@type": [
+        "rdfs:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "label": "Verb to Verb Mapping",
+      "rdfs:subClassOf": "dogm:Mapping",
+      "shacl:closed": false,
+      "shacl:property": [
+        {
+          "shacl:maxCount": 1,
+          "shacl:minCount": 1,
+          "shacl:nodeKind": "shacl:IRI",
+          "shacl:path": "dogm:verb"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "dogm:series",
+          "shacl:nodeKind": "shacl:BlankNode",
+          "shacl:property": [
+            {
+              "shacl:path": "rdf:first",
+              "shacl:class": "dogm:Mapping"
+            },
+            {
+              "shacl:path": "rdf:rest",
+              "shacl:nodeKind": "shacl:BlankNodeOrIRI"
+            }
+          ]
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "dogm:parallel",
+          "shacl:nodeKind": "shacl:BlankNode",
+          "shacl:property": [
+            {
+              "shacl:path": "rdf:first",
+              "shacl:class": "dogm:Mapping"
+            },
+            {
+              "shacl:path": "rdf:rest",
+              "shacl:nodeKind": "shacl:BlankNodeOrIRI"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "dogm:VerbNounMapping",
+      "@type": [
+        "rdfs:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "label": "Verb to Noun Mapping",
+      "rdfs:subClassOf": "dogm:Mapping",
+      "shacl:closed": false,
+      "shacl:property": [
+        {
+          "shacl:maxCount": 1,
+          "shacl:minCount": 1,
+          "shacl:nodeKind": "shacl:IRI",
+          "shacl:path": "dogm:verb"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:minCount": 1,
+          "shacl:nodeKind": "shacl:IRI",
+          "shacl:path": "dogm:Noun"
+        }
+      ]
+    },
+    {
+      "@id": "dogm:TriggerVerbMapping",
+      "@type": [
+        "rdfs:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "label": "Trigger to Verb Mapping",
+      "description": "A type of DOGM Mapping that specifies what should be done when a Trigger from a particular integration is received.",
+      "rdfs:subClassOf": "dogm:Mapping",
+      "shacl:closed": false,
+      "shacl:property": [
+        {
+          "shacl:maxCount": 1,
+          "shacl:minCount": 1,
+          "shacl:nodeKind": "shacl:IRI",
+          "shacl:path": "dogm:integration"
+        }
+      ]
+    },
+    {
+      "@id": "dogm:NounInterfaceMapping",
+      "@type": [
+        "rdfs:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "label": "Noun to Interface Component Mapping",
+      "rdfs:subClassOf": "dogm:Mapping",
+      "shacl:closed": false,
+      "shacl:property": [
+        {
+          "shacl:maxCount": 1,
+          "shacl:minCount": 1,
+          "shacl:nodeKind": "shacl:IRI",
+          "shacl:path": "dogm:Noun"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:minCount": 1,
+          "shacl:nodeKind": "shacl:IRI",
+          "shacl:path": "dogm:interface"
+        }
+      ]
+    },
+    {
+      "@id": "dogm:Dataview",
+      "@type": [
+        "rdfs:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "label": "Dataview",
+      "rdfs:subClassOf": "dogm:Entity",
+      "description": "A stored view on data in a Standard Storage.",
+      "shacl:closed": false,
+      "shacl:property": [
+        {
+          "shacl:minCount": 1,
+          "shacl:maxCount": 1,
+          "shacl:datatype": "rdf:JSON",
+          "shacl:path": "dogm:query"
+        },
+        {
+          "shacl:minCount": 1,
+          "shacl:maxCount": 1,
+          "shacl:datatype": "xsd:string",
+          "shacl:path": "rdfs:label"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:datatype": "xsd:string",
+          "shacl:path": "dcterms:description"
+        }
+      ],
+      "dogm:context": {
+        "updatedAt": {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@id": "http://purl.org/dc/terms/modified"
+        },
+        "createdAt": {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@id": "http://purl.org/dc/terms/created"
+        },
+        "query": {
+          "@type": "@json",
+          "@id": "https://dogm.com/ontologies/core/query"
+        },
+        "label": {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@id": "http://www.w3.org/2000/01/rdf-schema#label"
+        },
+        "description": {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@id": "http://purl.org/dc/elements/1.1/description"
+        }
+      }
+    },
+    {
+      "@id": "dogm:IntegrationSyncConfiguration",
+      "@type": [
+        "rdfs:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "rdfs:subClassOf": "dogm:Entity",
+      "label": "IntegrationSyncConfiguration",
+      "shacl:closed": false,
+      "shacl:property": [
+        {
+          "shacl:minCount": 1,
+          "shacl:maxCount": 1,
+          "shacl:nodeKind": "shacl:IRI",
+          "shacl:path": "dogm:integration"
+        },
+        {
+          "shacl:datatype": "rdf:JSON",
+          "shacl:path": "dogm:syncSteps"
+        }
+      ]
+    },
+    {
+      "@id": "dogm:JsonDataSource",
+      "@type": [
+        "rdfs:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "rdfs:subClassOf": "dogm:Entity",
+      "label": "JsonDataSource",
+      "shacl:closed": false,
+      "shacl:property": [
+        {
+          "shacl:minCount": 1,
+          "shacl:maxCount": 1,
+          "shacl:nodeKind": "shacl:IRI",
+          "shacl:path": "dogm:integration"
+        },
+        {
+          "shacl:datatype": "xsd:string",
+          "shacl:path": "dogm:source"
+        }
+      ]
+    },
+    {
+      "@id": "http://purl.org/dc/elements/1.1/description",
+      "@type": "rdf:Property",
+      "label": "description",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "http://www.w3.org/2000/01/rdf-schema#label",
+      "@type": "rdf:Property",
+      "label": "label",
+      "schema:rangeIncludes": "xsd:string",
+      "schema:domainIncludes": "dogm:Entity"
+    },
+    {
+      "@id": "http://purl.org/dc/terms/created",
+      "@type": "rdf:Property",
+      "label": "createdAt",
+      "schema:rangeIncludes": "xsd:dateTime",
+      "schema:domainIncludes": "dogm:Entity"
+    },
+    {
+      "@id": "http://purl.org/dc/terms/modified",
+      "@type": "rdf:Property",
+      "label": "updatedAt",
+      "schema:rangeIncludes": "xsd:dateTime",
+      "schema:domainIncludes": "dogm:Entity"
+    },
+    {
+      "@id": "schema:rangeIncludes",
+      "@type": "rdf:Property",
+      "label": "range",
+      "schema:rangeIncludes": [
+        "dogm:Noun",
+        "rdfs:Datatype"
+      ],
+      "schema:domainIncludes": "rdf:Property"
+    },
+    {
+      "@id": "schema:domainIncludes",
+      "@type": "rdf:Property",
+      "label": "domain",
+      "schema:rangeIncludes": "dogm:Noun",
+      "schema:domainIncludes": "rdf:Property"
+    },
+    {
+      "@id": "https://schema.org/email",
+      "@type": "rdf:Property",
+      "label": "email",
+      "description": "An email address",
+      "schema:rangeIncludes": "xsd:string",
+      "schema:domainIncludes": "dogm:Account"
+    },
+    {
+      "@id": "dogm:sourceId",
+      "@type": "rdf:Property",
+      "label": "sourceId",
+      "schema:domainIncludes": "dogm:SyncedEntity",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "dogm:source",
+      "@type": "rdf:Property",
+      "label": "source",
+      "schema:domainIncludes": "dogm:JsonDataSource",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "dogm:integration",
+      "@type": "rdf:Property",
+      "label": "integration",
+      "schema:domainIncludes": [
+        "dogm:Account",
+        "dogm:OpenApiDescription",
+        "dogm:VerbIntegrationMapping",
+        "dogm:TriggerVerbMapping",
+        "dogm:SyncedEntity",
+        "dogm:IntegrationSyncConfiguration",
+        "dogm:JsonDataSource"
+      ],
+      "schema:rangeIncludes": "dogm:Integration"
+    },
+    {
+      "@id": "dogm:context",
+      "@type": "rdf:Property",
+      "label": "context",
+      "description": "A JSON-LD Context Definition used to compact entities into a more human readable format",
+      "schema:domainIncludes": "dogm:Noun",
+      "schema:rangeIncludes": "rdf:JSON"
+    },
+    {
+      "@id": "dogm:refreshToken",
+      "@type": "rdf:Property",
+      "label": "refreshToken",
+      "schema:domainIncludes": "dogm:SecurityCredentials",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "dogm:accessToken",
+      "@type": "rdf:Property",
+      "label": "accessToken",
+      "schema:domainIncludes": "dogm:SecurityCredentials",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "dogm:apiKey",
+      "@type": "rdf:Property",
+      "label": "apiKey",
+      "schema:domainIncludes": "dogm:SecurityCredentials",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "dogm:clientId",
+      "@type": "rdf:Property",
+      "label": "clientId",
+      "schema:domainIncludes": "dogm:SecurityCredentials",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "dogm:clientSecret",
+      "@type": "rdf:Property",
+      "label": "clientSecret",
+      "schema:domainIncludes": "dogm:SecurityCredentials",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "dogm:account",
+      "@type": "rdf:Property",
+      "label": "account",
+      "schema:domainIncludes": "dogm:SecurityCredentials",
+      "schema:rangeIncludes": "dogm:Account"
+    },
+    {
+      "@id": "dogm:bearerToken",
+      "@type": "rdf:Property",
+      "label": "bearerToken",
+      "schema:domainIncludes": "dogm:SecurityCredentials",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "dogm:apiKey",
+      "@type": "rdf:Property",
+      "label": "apiKey",
+      "schema:domainIncludes": "dogm:SecurityCredentials",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "dogm:clientId",
+      "@type": "rdf:Property",
+      "label": "clientId",
+      "schema:domainIncludes": "dogm:SecurityCredentials",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "dogm:clientSecret",
+      "@type": "rdf:Property",
+      "label": "clientSecret",
+      "schema:domainIncludes": "dogm:SecurityCredentials",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "dogm:accessToken",
+      "@type": "rdf:Property",
+      "label": "accessToken",
+      "schema:domainIncludes": "dogm:SecurityCredentials",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "dogm:jwtBearerOptions",
+      "@type": "rdf:Property",
+      "label": "jwtBearerOptions",
+      "schema:domainIncludes": "dogm:SecurityCredentials",
+      "schema:rangeIncludes": "rdf:JSON"
+    },
+    {
+      "@id": "dogm:openApiDescription",
+      "@type": "rdf:Property",
+      "label": "openApiDescription",
+      "schema:domainIncludes": "dogm:OpenApiDescription",
+      "schema:rangeIncludes": "rdf:JSON"
+    },
+    {
+      "@id": "dogm:nextPageToken",
+      "@type": "rdf:Property",
+      "label": "nextPageToken",
+      "schema:domainIncludes": "dogm:TokenPaginatedCollection",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "dogm:page",
+      "@type": "rdf:Property",
+      "label": "page",
+      "schema:domainIncludes": "dogm:PaginatedCollection",
+      "schema:rangeIncludes": "xsd:integer"
+    },
+    {
+      "@id": "dogm:hasNextPage",
+      "@type": "rdf:Property",
+      "label": "hasNextPage",
+      "schema:domainIncludes": "dogm:PaginatedCollection",
+      "schema:rangeIncludes": "xsd:boolean"
+    },
+    {
+      "@id": "dogm:records",
+      "@type": "rdf:Property",
+      "label": "records",
+      "schema:domainIncludes": "dogm:Collection"
+    },
+    {
+      "@id": "dogm:linkedRecords",
+      "@type": "rdf:Property",
+      "label": "linkedRecords",
+      "schema:domainIncludes": "dogm:Collection"
+    },
+    {
+      "@id": "dogm:entity",
+      "@type": "rdf:Property",
+      "label": "entity",
+      "schema:domainIncludes": "dogm:RecommendedDeduplication"
+    },
+    {
+      "@id": "dogm:score",
+      "@type": "rdf:Property",
+      "label": "score",
+      "schema:domainIncludes": "dogm:RecommendedDeduplication",
+      "schema:rangeIncludes": "xsd:double"
+    },
+    {
+      "@id": "dogm:status",
+      "@type": "rdf:Property",
+      "label": "status",
+      "schema:domainIncludes": "dogm:RecommendedDeduplication",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "dogm:returnValue",
+      "@type": "rdf:Property",
+      "label": "returnValue",
+      "schema:domainIncludes": "dogm:Verb",
+      "schema:rangeIncludes": "shacl:NodeShape"
+    },
+    {
+      "@id": "dogm:parameters",
+      "@type": "rdf:Property",
+      "label": "parameters",
+      "schema:domainIncludes": "dogm:Verb",
+      "schema:rangeIncludes": "shacl:NodeShape"
+    },
+    {
+      "@id": "dogm:parametersContext",
+      "@type": "rdf:Property",
+      "label": "parametersContext",
+      "schema:domainIncludes": "dogm:Verb",
+      "schema:rangeIncludes": "rdf:JSON"
+    },
+    {
+      "@id": "dogm:verb",
+      "@type": "rdf:Property",
+      "label": "verb",
+      "schema:domainIncludes": [
+        "dogm:VerbIntegrationMapping",
+        "dogm:VerbNounMapping"
+      ],
+      "schema:rangeIncludes": "dogm:Verb"
+    },
+    {
+      "@id": "dogm:Noun",
+      "@type": "rdf:Property",
+      "label": "noun",
+      "schema:domainIncludes": [
+        "dogm:VerbNounMapping",
+        "dogm:NounInterfaceMapping"
+      ],
+      "schema:rangeIncludes": "dogm:Noun"
+    },
+    {
+      "@id": "dogm:interface",
+      "@type": "rdf:Property",
+      "label": "interface",
+      "schema:domainIncludes": "dogm:NounInterfaceMapping",
+      "schema:rangeIncludes": "dogm:InterfaceComponent"
+    },
+    {
+      "@id": "dogm:preProcessingMapping",
+      "@type": "rdf:Property",
+      "label": "preProcessingMapping",
+      "schema:domainIncludes": "dogm:Mapping",
+      "schema:rangeIncludes": "rr:TriplesMap"
+    },
+    {
+      "@id": "dogm:preProcessingMappingFrame",
+      "@type": "rdf:Property",
+      "label": "preProcessingMappingFrame",
+      "schema:domainIncludes": "dogm:Mapping",
+      "schema:rangeIncludes": "rdf:JSON"
+    },
+    {
+      "@id": "dogm:parameterMapping",
+      "@type": "rdf:Property",
+      "label": "parameterMapping",
+      "description": "An RML TriplesMap specifying how the standard parameters of a Verb or Trigger should be translated into the unique parameters of a targeted Verb or Integration operation.",
+      "schema:domainIncludes": "dogm:Mapping",
+      "schema:rangeIncludes": "rr:TriplesMap"
+    },
+    {
+      "@id": "dogm:parameterMappingFrame",
+      "@type": "rdf:Property",
+      "label": "parameterMappingFrame",
+      "description": "A JSON-LD Frame used to transform the JSON-LD returned by a parameterMapping into the format required by the targeted Verb or Integration operation.",
+      "schema:domainIncludes": "dogm:Mapping",
+      "schema:rangeIncludes": "rdf:JSON"
+    },
+    {
+      "@id": "dogm:parameterReference",
+      "@type": "rdf:Property",
+      "label": "parameterReference",
+      "schema:domainIncludes": "dogm:Mapping",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "dogm:operationMapping",
+      "@type": "rdf:Property",
+      "label": "operationMapping",
+      "description": "An RML TriplesMap specifying how the parameters of the Verb should be used to determine the name and type of the operation to perform in the Integration.",
+      "schema:domainIncludes": "dogm:Mapping",
+      "schema:rangeIncludes": "rr:TriplesMap"
+    },
+    {
+      "@id": "dogm:operationMapping",
+      "@type": "rdf:Property",
+      "label": "operationId",
+      "schema:domainIncludes": "dogm:Mapping",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "dogm:verMapping",
+      "@type": "rdf:Property",
+      "label": "verMapping",
+      "description": "An RML TriplesMap specifying what target Verb should be executed depending on the parameters supplied to an original Verb or Trigger.",
+      "schema:domainIncludes": "dogm:Mapping",
+      "schema:rangeIncludes": "rr:TriplesMap"
+    },
+    {
+      "@id": "dogm:verbId",
+      "@type": "rdf:Property",
+      "label": "verbId",
+      "description": "A literal value to be used as a shortcut for the id of the target Verb to execute instead of the dogm:verbId predicate of the dogm:verbMapping.",
+      "schema:domainIncludes": "dogm:Mapping",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "dogm:returnValueMapping",
+      "@type": "rdf:Property",
+      "label": "returnValueMapping",
+      "description": "An RML TriplesMap specifying how the unique return value of the Integration should be translated into the standard return value of the Verb. In the case of a VernNounMapping, this specifies how the parameters of the Verb should be directly translated into a return value..",
+      "schema:domainIncludes": "dogm:Mapping",
+      "schema:rangeIncludes": "rr:TriplesMap"
+    },
+    {
+      "@id": "dogm:returnValueFrame",
+      "@type": "rdf:Property",
+      "label": "returnValueFrame",
+      "description": "A JSON-LD Frame used to transform the JSON-LD returned by the `returnValueMapping` into a prefered format. This field overrides the returnValueFrame of the Verb. If not supplied, the Verb's returnValueFrame will be used instead.",
+      "schema:domainIncludes": "dogm:Mapping",
+      "schema:rangeIncludes": "rdf:JSON"
+    },
+    {
+      "@id": "dogm:query",
+      "@type": "rdf:Property",
+      "label": "query",
+      "schema:domainIncludes": "dogm:Dataview",
+      "schema:rangeIncludes": "rdf:JSON"
+    },
+    {
+      "@id": "dogm:deduplicationGroup",
+      "@type": "rdf:Property",
+      "label": "deduplicationGroup",
+      "schema:domainIncludes": "dogm:DeduplicatableEntity",
+      "schema:rangeIncludes": "dogm:DeduplicatedEntityGroup"
+    },
+    {
+      "@id": "dogm:deduplicationId",
+      "@type": "rdf:Property",
+      "label": "deduplicationId",
+      "schema:domainIncludes": "dogm:DeduplicatableEntity",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "dogm:deduplicationValue",
+      "@type": "rdf:Property",
+      "label": "deduplicationValue",
+      "schema:domainIncludes": "dogm:DeduplicatableEntity",
+      "schema:rangeIncludes": "rdf:JSON"
+    },
+    {
+      "@id": "dogm:semanticSearchId",
+      "@type": "rdf:Property",
+      "label": "semanticSearchId",
+      "schema:domainIncludes": "dogm:IndexableEntity",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "dogm:syncSteps",
+      "@type": "rdf:Property",
+      "label": "syncSteps",
+      "schema:domainIncludes": "dogm:IntegrationSyncConfiguration",
+      "schema:rangeIncludes": "rdf:JSON"
+    },
+    {
+      "@id": "dogm:invalidTokenErrorMatcher",
+      "@type": "rdf:Property",
+      "label": "invalidTokenErrorMatcher",
+      "schema:domainIncludes": "dogm:Integration",
+      "schema:rangeIncludes": "dogm:InvalidTokenErrorMatcher"
+    },
+    {
+      "@id": "dogm:invalidTokenErrorMatcherStatus",
+      "@type": "rdf:Property",
+      "label": "invalidTokenErrorMatcherStatus",
+      "schema:domainIncludes": "dogm:InvalidTokenErrorMatcher",
+      "schema:rangeIncludes": "xsd:integer"
+    },
+    {
+      "@id": "dogm:invalidTokenErrorMatcherMessageRegex",
+      "@type": "rdf:Property",
+      "label": "invalidTokenErrorMatcherMessageRegex",
+      "schema:domainIncludes": "dogm:InvalidTokenErrorMatcher",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "dogm:syncStepConfiguration",
+      "@type": "rdf:Property",
+      "label": "syncStepConfiguration",
+      "schema:domainIncludes": "dogm:Account",
+      "schema:rangeIncludes": "dogm:SyncStepConfiguration"
+    },
+    {
+      "@id": "dogm:step",
+      "@type": "rdf:Property",
+      "label": "step",
+      "schema:domainIncludes": "dogm:SyncStepConfiguration",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "dogm:defaultParameters",
+      "@type": "rdf:Property",
+      "label": "defaultParameters",
+      "schema:domainIncludes": "dogm:SyncStepConfiguration",
+      "schema:rangeIncludes": "rdf:JSON"
+    },
+    {
+      "@id": "dogm:indexForSemanticSearch",
+      "@type": "rdf:Property",
+      "label": "indexForSemanticSearch",
+      "schema:domainIncludes": "dogm:Noun",
+      "schema:rangeIncludes": "xsd:boolean"
+    },
+    {
+      "@id": "dogm:deduplicationMethod",
+      "@type": "rdf:Property",
+      "label": "deduplicationMethod",
+      "schema:domainIncludes": "dogm:Noun",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "dogm:deduplicationDistanceThreshold",
+      "@type": "rdf:Property",
+      "label": "deduplicationDistanceThreshold",
+      "schema:domainIncludes": "dogm:Noun",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "dogm:deduplicationRecommendationDistanceThreshold",
+      "@type": "rdf:Property",
+      "label": "deduplicationRecommendationDistanceThreshold",
+      "schema:domainIncludes": "dogm:Noun",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "dogm:deduplicationRelationshipFilter",
+      "@type": "rdf:Property",
+      "label": "deduplicationRelationshipFilter",
+      "schema:domainIncludes": "dogm:Noun",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "dogm:deduplicationRequiredFields",
+      "@type": "rdf:Property",
+      "label": "deduplicationRequiredFields",
+      "schema:domainIncludes": "dogm:Noun",
+      "schema:rangeIncludes": "rdf:JSON"
+    },
+    {
+      "@id": "dogm:deduplicatedEntityRelations",
+      "@type": "rdf:Property",
+      "label": "deduplicatedEntityRelations",
+      "schema:domainIncludes": "dogm:Noun",
+      "schema:rangeIncludes": "rdf:JSON"
+    },
+    {
+      "@id": "dogm:indexedEntityRelations",
+      "@type": "rdf:Property",
+      "label": "indexedEntityRelations",
+      "schema:domainIncludes": "dogm:Noun",
+      "schema:rangeIncludes": "rdf:JSON"
+    },
+    {
+      "@id": "dogm:disableIntraIntegrationDeduplication",
+      "@type": "rdf:Property",
+      "label": "disableIntraIntegrationDeduplication",
+      "schema:domainIncludes": "dogm:Integration",
+      "schema:rangeIncludes": "xsd:boolean"
+    },
+    {
+      "@id": "dogm:overrideBasePath",
+      "@type": "rdf:Property",
+      "label": "overrideBasePath",
+      "schema:domainIncludes": "dogm:Account",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "dogm:chosenDeduplicationGroup",
+      "@type": "rdf:Property",
+      "label": "chosenDeduplicationGroup",
+      "schema:domainIncludes": "dogm:RecommendedDeduplication",
+      "schema:rangeIncludes": "dogm:DeduplicatedEntityGroup"
+    },
+    {
+      "@id": "dogm:deletedDeduplicationGroup",
+      "@type": "rdf:Property",
+      "label": "deletedDeduplicationGroup",
+      "schema:domainIncludes": "dogm:RecommendedDeduplication",
+      "schema:rangeIncludes": "dogm:DeduplicatedEntityGroup"
+    },
+    {
+      "@id": "dogm:series",
+      "@type": "rdf:Property",
+      "label": "series",
+      "schema:domainIncludes": "dogm:CompositeVerbMapping",
+      "schema:rangeIncludes": "rdf:List"
+    },
+    {
+      "@id": "dogm:parallel",
+      "@type": "rdf:Property",
+      "label": "parallel",
+      "schema:domainIncludes": "dogm:CompositeVerbMapping",
+      "schema:rangeIncludes": "rdf:List"
+    },
+    {
+      "@id": "dogm:indexAsChatbotTool",
+      "@type": "rdf:Property",
+      "label": "indexAsChatbotTool",
+      "schema:domainIncludes": "dogm:Verb",
+      "schema:rangeIncludes": "xsd:boolean"
+    },
+    {
+      "@id": "schema:telephone",
+      "@type": "rdf:Property",
+      "label": "telephone",
+      "description": "The telephone number.",
+      "schema:domainIncludes": [
+        "schema:Person",
+        "schema:Event",
+        "schema:Place",
+        "schema:Organization"
+      ],
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "schema:name",
+      "@type": "rdf:Property",
+      "label": "name",
+      "description": "The name of the item.",
+      "schema:domainIncludes": [
+        "schema:Person",
+        "schema:Event",
+        "schema:Place",
+        "schema:Organization",
+        "schema:DefinedTerm",
+        "schema:Guide"
+      ],
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "schema:email",
+      "@type": "rdf:Property",
+      "label": "email",
+      "description": "An email address.",
+      "schema:domainIncludes": [
+        "schema:Person",
+        "dogm:Account",
+        "schema:Event",
+        "schema:Place",
+        "schema:Organization"
+      ],
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "schema:identifier",
+      "@type": "rdf:Property",
+      "label": "identifier",
+      "schema:domainIncludes": [
+        "schema:Event",
+        "schema:Place",
+        "schema:Organization",
+        "schema:DefinedTerm"
+      ],
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "schema:url",
+      "@type": "rdf:Property",
+      "label": "url",
+      "schema:domainIncludes": [
+        "schema:Event",
+        "schema:Place",
+        "schema:Organization",
+        "schema:Guide"
+      ],
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "schema:description",
+      "@type": "rdf:Property",
+      "label": "description",
+      "schema:domainIncludes": [
+        "schema:Event",
+        "schema:Place",
+        "schema:Organization"
+      ],
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "schema:doorTime",
+      "@type": "rdf:Property",
+      "label": "doorTime",
+      "schema:domainIncludes": "schema:Event",
+      "schema:rangeIncludes": "xsd:dateTime"
+    },
+    {
+      "@id": "schema:startDate",
+      "@type": "rdf:Property",
+      "label": "startDate",
+      "schema:domainIncludes": "schema:Event",
+      "schema:rangeIncludes": "xsd:dateTime"
+    },
+    {
+      "@id": "schema:endDate",
+      "@type": "rdf:Property",
+      "label": "endDate",
+      "schema:domainIncludes": "schema:Event",
+      "schema:rangeIncludes": "xsd:dateTime"
+    },
+    {
+      "@id": "schema:eventStatus",
+      "@type": "rdf:Property",
+      "label": "eventStatus",
+      "schema:domainIncludes": "schema:Event",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "schema:location",
+      "@type": "rdf:Property",
+      "label": "location",
+      "schema:domainIncludes": [
+        "schema:Event",
+        "schema:Organization"
+      ],
+      "schema:rangeIncludes": "schema:Place"
+    },
+    {
+      "@id": "schema:performer",
+      "@type": "rdf:Property",
+      "label": "performer",
+      "schema:domainIncludes": "schema:Event",
+      "schema:rangeIncludes": [
+        "schema:Organiztion",
+        "schema:Person"
+      ]
+    },
+    {
+      "@id": "schema:image",
+      "@type": "rdf:Property",
+      "label": "image",
+      "schema:domainIncludes": [
+        "schema:Event",
+        "schema:Place",
+        "schema:Organization"
+      ],
+      "schema:rangeIncludes": "schema:ImageObject"
+    },
+    {
+      "@id": "schema:mainEntityOfPage",
+      "@type": "rdf:Property",
+      "label": "mainEntityOfPage",
+      "schema:domainIncludes": [
+        "schema:Event",
+        "schema:Place",
+        "schema:Organization"
+      ],
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "schema:category",
+      "@type": "rdf:Property",
+      "label": "category",
+      "schema:domainIncludes": [
+        "schema:Event",
+        "schema:Place"
+      ],
+      "schema:rangeIncludes": "schema:DefinedTerm"
+    },
+    {
+      "@id": "schema:agent",
+      "@type": "rdf:Property",
+      "label": "agent",
+      "schema:domainIncludes": "schema:Action",
+      "schema:rangeIncludes": "schema:Person"
+    },
+    {
+      "@id": "schema:latitude",
+      "@type": "rdf:Property",
+      "label": "latitude",
+      "schema:domainIncludes": "schema:Place",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "schema:longitude",
+      "@type": "rdf:Property",
+      "label": "longitude",
+      "schema:domainIncludes": "schema:Place",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "schema:address",
+      "@type": "rdf:Property",
+      "label": "address",
+      "schema:domainIncludes": "schema:Place",
+      "schema:rangeIncludes": "schema:PostalAddress"
+    },
+    {
+      "@id": "schema:streetAddress",
+      "@type": "rdf:Property",
+      "label": "streetAddress",
+      "schema:domainIncludes": "schema:PostalAddress",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "schema:postalCode",
+      "@type": "rdf:Property",
+      "label": "postalCode",
+      "schema:domainIncludes": "schema:PostalAddress",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "schema:postOfficeBoxNumber",
+      "@type": "rdf:Property",
+      "label": "postOfficeBoxNumber",
+      "schema:domainIncludes": "schema:PostalAddress",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "schema:addressRegion",
+      "@type": "rdf:Property",
+      "label": "addressRegion",
+      "schema:domainIncludes": "schema:PostalAddress",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "schema:addressLocality",
+      "@type": "rdf:Property",
+      "label": "addressLocality",
+      "schema:domainIncludes": "schema:PostalAddress",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "schema:addressCountry",
+      "@type": "rdf:Property",
+      "label": "addressCountry",
+      "schema:domainIncludes": "schema:PostalAddress",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "schema:aggregateRating",
+      "@type": "rdf:Property",
+      "label": "aggregateRating",
+      "schema:domainIncludes": "schema:Place",
+      "schema:rangeIncludes": "schema:AggregateRating"
+    },
+    {
+      "@id": "schema:reviewCount",
+      "@type": "rdf:Property",
+      "label": "reviewCount",
+      "schema:domainIncludes": "schema:AggregateRating",
+      "schema:rangeIncludes": "xsd:integer"
+    },
+    {
+      "@id": "schema:ratingValue",
+      "@type": "rdf:Property",
+      "label": "ratingValue",
+      "schema:domainIncludes": "schema:AggregateRating",
+      "schema:rangeIncludes": "xsd:double"
+    },
+    {
+      "@id": "schema:starRating",
+      "@type": "rdf:Property",
+      "label": "starRating",
+      "schema:domainIncludes": "schema:Place",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "schema:priceRange",
+      "@type": "rdf:Property",
+      "label": "priceRange",
+      "schema:domainIncludes": "schema:Place",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "schema:acceptsReservations",
+      "@type": "rdf:Property",
+      "label": "acceptsReservations",
+      "schema:domainIncludes": "schema:Place",
+      "schema:rangeIncludes": "xsd:boolean"
+    },
+    {
+      "@id": "schema:openingHours",
+      "@type": "rdf:Property",
+      "label": "openingHours",
+      "schema:domainIncludes": "schema:Place",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "schema:hasMenu",
+      "@type": "rdf:Property",
+      "label": "hasMenu",
+      "schema:domainIncludes": "schema:Place",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "schema:potentialAction",
+      "@type": "rdf:Property",
+      "label": "potentialAction",
+      "schema:domainIncludes": "schema:Place",
+      "schema:rangeIncludes": "schema:Action"
+    },
+    {
+      "@id": "schema:target",
+      "@type": "rdf:Property",
+      "label": "target",
+      "schema:domainIncludes": "schema:Action",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "schema:recipient",
+      "@type": "rdf:Property",
+      "label": "recipient",
+      "schema:domainIncludes": "schema:Action",
+      "schema:rangeIncludes": "schema:Person"
+    },
+    {
+      "@id": "schema:areaServed",
+      "@type": "rdf:Property",
+      "label": "areaServed",
+      "schema:domainIncludes": "schema:Organization",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "schema:keywords",
+      "@type": "rdf:Property",
+      "label": "keywords",
+      "schema:domainIncludes": [
+        "schema:Event",
+        "schema:Place",
+        "schema:Organization"
+      ],
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "schema:termCode",
+      "@type": "rdf:Property",
+      "label": "termCode",
+      "schema:domainIncludes": "schema:DefinedTerm",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "schema:additionalType",
+      "@type": "rdf:Property",
+      "label": "additionalType",
+      "schema:domainIncludes": "schema:DefinedTerm",
+      "schema:rangeIncludes": "xsd:string"
+    },
+    {
+      "@id": "schema:hasPart",
+      "@type": "rdf:Property",
+      "label": "hasPart",
+      "schema:domainIncludes": "schema:Guide",
+      "schema:rangeIncludes": "concierge:DeduplicatedEntityGroup"
+    },
+    {
+      "@id": "schema:datePublished",
+      "@type": "rdf:Property",
+      "label": "datePublished",
+      "schema:domainIncludes": "schema:Guide",
+      "schema:rangeIncludes": "xsd:dateTime"
+    }
+  ]
+}

@@ -1,0 +1,843 @@
+{
+  "@context": {
+    "shacl": "http://www.w3.org/ns/shacl#",
+    "fnml": "http://semweb.mmlab.be/ns/fnml#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "rdfs:subClassOf": {
+      "@type": "@id"
+    },
+    "rdfs:range": {
+      "@type": "@id"
+    },
+    "rdfs:domain": {
+      "@type": "@id"
+    },
+    "boolean": "http://www.w3.org/2001/XMLSchema#boolean",
+    "integer": "http://www.w3.org/2001/XMLSchema#integer",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "rr": "http://www.w3.org/ns/r2rml#",
+    "rml": "http://semweb.mmlab.be/ns/rml#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "shacl:path": {
+      "@type": "@id"
+    },
+    "shacl:class": {
+      "@type": "@id"
+    },
+    "shacl:datatype": {
+      "@type": "@id"
+    },
+    "shacl:maxCount": {
+      "@type": "xsd:integer"
+    },
+    "shacl:minCount": {
+      "@type": "xsd:integer"
+    },
+    "shacl:name": {
+      "@type": "xsd:string"
+    },
+    "shacl:description": {
+      "@type": "xsd:string"
+    },
+    "shacl:closed": {
+      "@type": "xsd:boolean"
+    },
+    "shacl:property": {
+      "@type": "@id"
+    },
+    "shacl:nodeKind": {
+      "@type": "@id"
+    },
+    "dogm": "https://dogm.com/ontologies/core/"
+  },
+  "@graph": [
+    {
+      "@id": "https://dogm.com/ontologies/core/Account",
+      "@type": [
+        "owl:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "rdfs:label": "Account",
+      "shacl:closed": false,
+      "shacl:property": [
+        {
+          "shacl:maxCount": 1,
+          "shacl:nodeKind": "shacl:IRI",
+          "shacl:path": "https://dogm.com/ontologies/core/integration"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "https://schema.org/email"
+        }
+      ]
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/File",
+      "@type": [
+        "owl:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "rdfs:label": "File",
+      "skos:definition": "An electronic document.",
+      "shacl:closed": false,
+      "shacl:property": [
+        {
+          "shacl:maxCount": 1,
+          "shacl:minCount": 1,
+          "shacl:path": "rdfs:label"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:minCount": 1,
+          "shacl:path": "https://dogm.com/ontologies/core/sourceId"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:minCount": 1,
+          "shacl:nodeKind": "shacl:IRI",
+          "shacl:path": "https://dogm.com/ontologies/core/integration"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "https://dogm.com/ontologies/core/size"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "https://dogm.com/ontologies/core/url"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "https://dogm.com/ontologies/core/md5Checksum"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "https://dogm.com/ontologies/core/mimeType"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "https://dogm.com/ontologies/core/isWeblink"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "https://dogm.com/ontologies/core/deleted"
+        }
+      ]
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/Folder",
+      "@type": [
+        "owl:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "rdfs:label": "Folder",
+      "rdfs:subClassOf": "https://dogm.com/ontologies/core/File",
+      "skos:definition": "An electronic folder that stores electronic documents.",
+      "shacl:closed": false
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/Integration",
+      "@type": [
+        "owl:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "rdfs:label": "Integration",
+      "shacl:closed": false,
+      "shacl:property": [
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "rdfs:label"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "http://purl.org/dc/elements/1.1/description"
+        },
+        {
+          "shacl:nodeKind": "shacl:IRI",
+          "shacl:path": "https://dogm.com/ontologies/core/icons"
+        }
+      ]
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/Mapping",
+      "@type": [
+        "owl:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "rdfs:label": "Mapping",
+      "shacl:closed": false,
+      "shacl:property": {
+        "shacl:maxCount": 1,
+        "shacl:path": "rdfs:label"
+      }
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/Noun",
+      "@type": [
+        "owl:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "rdfs:label": "Noun",
+      "shacl:closed": false,
+      "shacl:property": {
+        "shacl:maxCount": 1,
+        "shacl:path": "https://dogm.com/ontologies/core/id"
+      }
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/SecurityCredentials",
+      "@type": [
+        "owl:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "rdfs:label": "Security Credentials",
+      "shacl:closed": false,
+      "shacl:property": [
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "https://dogm.com/ontologies/core/refreshToken"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:nodeKind": "shacl:IRI",
+          "shacl:path": "https://dogm.com/ontologies/core/account"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "https://dogm.com/ontologies/core/accessToken"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "https://dogm.com/ontologies/core/bearerToken"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "https://dogm.com/ontologies/core/apiKey"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "https://dogm.com/ontologies/core/clientId"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "https://dogm.com/ontologies/core/clientSecret"
+        }
+      ]
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/OpenApiDescription",
+      "@type": [
+        "owl:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "rdfs:label": "OpenApiDescription",
+      "shacl:closed": false,
+      "shacl:property": [
+        {
+          "shacl:maxCount": 1,
+          "shacl:nodeKind": "shacl:IRI",
+          "shacl:path": "https://dogm.com/ontologies/core/integration"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "https://dogm.com/ontologies/core/openApiDescription"
+        }
+      ]
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/TokenPaginatedCollection",
+      "@type": [
+        "owl:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "rdfs:label": "Token Paginated Collection",
+      "shacl:closed": false,
+      "shacl:property": [
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "https://dogm.com/ontologies/core/nextPageToken"
+        },
+        {
+          "shacl:nodeKind": "shacl:IRI",
+          "shacl:path": "https://dogm.com/ontologies/core/records"
+        }
+      ]
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/Verb",
+      "@type": [
+        "owl:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "rdfs:label": "Verb",
+      "shacl:closed": false,
+      "property": [
+        {
+          "shacl:class": "shacl:NodeShape",
+          "shacl:maxCount": 1,
+          "shacl:nodeKind": "shacl:BlankNode",
+          "shacl:path": "dogm:parameters",
+          "shacl:name": "parameters",
+          "shacl:description": "A SHACL NodeShape specifying the format and constraints that the parameters of a Verb must conform to."
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "dogm:parametersContext",
+          "shacl:name": "parametersContext",
+          "shacl:datatype": "rdf:JSON",
+          "shacl:description": "A JSON-LD Context Definition used to expand the parameters supplied a Verb so that they can be validated against the Verb's `parameters` NodeShape."
+        },
+        {
+          "shacl:class": "shacl:NodeShape",
+          "shacl:maxCount": 1,
+          "shacl:path": "dogm:returnValue",
+          "shacl:name": "returnValue",
+          "shacl:description": "A SHACL NodeShape specifying the format and constraints that the return value of a Verb must conform to."
+        }
+      ]
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/NounMappedVerb",
+      "@type": [
+        "owl:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "rdfs:subClassOf": "https://dogm.com/ontologies/core/Verb"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/OpenApiSecuritySchemeVerb",
+      "@type": [
+        "owl:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "rdfs:subClassOf": "https://dogm.com/ontologies/core/Verb"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/CompositeMapping",
+      "@type": [
+        "owl:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "rdfs:label": "Composite Mapping",
+      "rdfs:subClassOf": "https://dogm.com/ontologies/core/Mapping",
+      "shacl:closed": false,
+      "shacl:property": [
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "dogm:series",
+          "shacl:name": "series",
+          "shacl:nodeKind": "shacl:BlankNode",
+          "shacl:class": "rdf:List",
+          "shacl:description": "An rdf List of one or more Verb Mappings that determine Verbs that should be executed in series. The return value of each Verb in series gets passes the original Verb parameters and the previous Verb return value."
+        },
+        {
+          "shacl:path": {
+            "rdf:first": "dogm:series",
+            "rdf:rest": {
+              "rdf:first": {
+                "shacl:zeroOrMorePath": "rdf:rest"
+              },
+              "rdf:rest": {
+                "rdf:first": "dogm:parameterMapping"
+              }
+            }
+          },
+          "shacl:class": "rr:TriplesMap",
+          "shacl:nodeKind": "shacl:IRI",
+          "shacl:name": "parameterMapping",
+          "shacl:shacl:description": "An RML TriplesMap specifying how the standard parameters of the original Verb should be translated into the parameters of the target Verb."
+        },
+        {
+          "shacl:path": {
+            "rdf:first": "dogm:series",
+            "rdf:rest": {
+              "rdf:first": {
+                "shacl:zeroOrMorePath": "rdf:rest"
+              },
+              "rdf:rest": {
+                "rdf:first": "dogm:parameterMappingFrame"
+              }
+            }
+          },
+          "shacl:name": "parameterMappingFrame",
+          "shacl:datatype": "rdf:JSON",
+          "shacl:shacl:description": "A JSON-LD Frame used to transform the JSON-LD returned by the parameterMapping into the format required by target Verb's parameters."
+        },
+        {
+          "shacl:path": {
+            "rdf:first": "dogm:series",
+            "rdf:rest": {
+              "rdf:first": {
+                "shacl:zeroOrMorePath": "rdf:rest"
+              },
+              "rdf:rest": {
+                "rdf:first": "dogm:verbMapping"
+              }
+            }
+          },
+          "shacl:maxCount": 1,
+          "shacl:class": "rr:TriplesMap",
+          "shacl:nodeKind": "shacl:IRI",
+          "shacl:name": "verbMapping",
+          "shacl:description": "An RML TriplesMap specifying what target Verb should be executed depending on the parameters supplied to the original Verb."
+        },
+        {
+          "shacl:path": {
+            "rdf:first": "dogm:series",
+            "rdf:rest": {
+              "rdf:first": {
+                "shacl:zeroOrMorePath": "rdf:rest"
+              },
+              "rdf:rest": {
+                "rdf:first": "dogm:returnValueMapping"
+              }
+            }
+          },
+          "shacl:class": "rr:TriplesMap",
+          "shacl:nodeKind": "shacl:IRI",
+          "shacl:name": "returnValueMapping",
+          "shacl:description": "An RML TriplesMap specifying how the return value of the Verb should be translated to be passed to the next Verb in series."
+        },
+        {
+          "shacl:path": {
+            "rdf:first": "dogm:series",
+            "rdf:rest": {
+              "rdf:first": {
+                "shacl:zeroOrMorePath": "rdf:rest"
+              },
+              "rdf:rest": {
+                "rdf:first": "dogm:returnValueFrame"
+              }
+            }
+          },
+          "shacl:maxCount": 1,
+          "shacl:name": "returnValueFrame",
+          "shacl:datatype": "rdf:JSON",
+          "shacl:description": "A JSON-LD Frame used to transform the JSON-LD returned by the returnValueMapping into a prefered format."
+        },
+        {
+          "shacl:path": "dogm:parallel",
+          "shacl:name": "parallel",
+          "shacl:shacl:description": "One or more Verb Mappings that determine Verbs that should be executed in parallel."
+        },
+        {
+          "shacl:path": {
+            "rdf:first": "dogm:parallel",
+            "rdf:rest": {
+              "rdf:first": "dogm:parameterMapping"
+            }
+          },
+          "shacl:class": "rr:TriplesMap",
+          "shacl:nodeKind": "shacl:IRI",
+          "shacl:name": "parameterMapping",
+          "shacl:description": "An RML TriplesMap specifying how the standard parameters of the original Verb should be translated into the parameters of the target Verb."
+        },
+        {
+          "shacl:path": {
+            "rdf:first": "dogm:parallel",
+            "rdf:rest": {
+              "rdf:first": "dogm:parameterMappingFrame"
+            }
+          },
+          "shacl:name": "parameterMappingFrame",
+          "shacl:datatype": "rdf:JSON",
+          "shacl:description": "A JSON-LD Frame used to transform the JSON-LD returned by the parameterMapping into the format required by target Verb's parameters."
+        },
+        {
+          "shacl:path": {
+            "rdf:first": "dogm:parallel",
+            "rdf:rest": {
+              "rdf:first": "dogm:verbMapping"
+            }
+          },
+          "shacl:maxCount": 1,
+          "shacl:class": "rr:TriplesMap",
+          "shacl:nodeKind": "shacl:IRI",
+          "shacl:name": "verbMapping",
+          "shacl:description": "An RML TriplesMap specifying what target Verb should be executed depending on the parameters supplied to the original Verb."
+        }
+      ]
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/VerbIntegrationMapping",
+      "@type": [
+        "owl:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "rdfs:label": "Verb to Integration Mapping",
+      "rdfs:subClassOf": "https://dogm.com/ontologies/core/Mapping",
+      "shacl:closed": false,
+      "shacl:property": [
+        {
+          "shacl:class": "rr:TriplesMap",
+          "shacl:nodeKind": "shacl:IRI",
+          "shacl:path": "https://dogm.com/ontologies/core/parameterMapping"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:nodeKind": "shacl:IRI",
+          "shacl:path": "https://dogm.com/ontologies/core/verb"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:datatype": "xsd:string",
+          "shacl:name": "operationId",
+          "shacl:path": "https://dogm.com/ontologies/core/operationId"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:class": "rr:TriplesMap",
+          "shacl:nodeKind": "shacl:IRI",
+          "shacl:path": "https://dogm.com/ontologies/core/operationMapping"
+        },
+        {
+          "shacl:class": "rr:TriplesMap",
+          "shacl:nodeKind": "shacl:IRI",
+          "shacl:path": "https://dogm.com/ontologies/core/returnValueMapping"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:path": "dogm:returnValueFrame",
+          "shacl:name": "returnValueFrame",
+          "shacl:datatype": "rdf:JSON",
+          "shacl:description": "A JSON-LD Frame used to transform the JSON-LD returned by a Mapping to this Verb."
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:minCount": 1,
+          "shacl:nodeKind": "shacl:IRI",
+          "shacl:path": "https://dogm.com/ontologies/core/integration"
+        }
+      ]
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/VerbNounMapping",
+      "@type": [
+        "owl:Class",
+        "shacl:NodeShape",
+        "dogm:Noun"
+      ],
+      "rdfs:label": "Verb to Noun Mapping",
+      "rdfs:subClassOf": "https://dogm.com/ontologies/core/Mapping",
+      "shacl:closed": false,
+      "shacl:property": [
+        {
+          "shacl:maxCount": 1,
+          "shacl:minCount": 1,
+          "shacl:nodeKind": "shacl:IRI",
+          "shacl:path": "https://dogm.com/ontologies/core/verb"
+        },
+        {
+          "shacl:maxCount": 1,
+          "shacl:minCount": 1,
+          "shacl:nodeKind": "shacl:IRI",
+          "shacl:path": "https://dogm.com/ontologies/core/noun"
+        }
+      ]
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/accessToken",
+      "@type": "owl:ObjectProperty",
+      "rdfs:label": "accessToken",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/account",
+      "@type": "owl:ObjectProperty",
+      "rdfs:label": "account",
+      "rdfs:range": "https://dogm.com/ontologies/core/Account"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/accounts",
+      "@type": "owl:ObjectProperty",
+      "rdfs:label": "accounts",
+      "rdfs:range": "https://dogm.com/ontologies/core/Account"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/command",
+      "@type": "owl:ObjectProperty",
+      "rdfs:label": "command",
+      "rdfs:range": "https://dogm.com/ontologies/core/types/Command"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/cronSchedule",
+      "@type": "owl:ObjectProperty",
+      "rdfs:label": "cronSchedule",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/defaultUrl",
+      "@type": "owl:ObjectProperty",
+      "rdfs:domain": "https://dogm.com/ontologies/core/WebApplication",
+      "rdfs:label": "defaultUrl",
+      "rdfs:range": "https://dogm.com/ontologies/core/types/UrlTemplate",
+      "skos:definition": "The URL a user should be taken to by default when launching a Web Application. Can include terms surrounded by curly brackets which will be replaced by user specific values. Eg. {email} will be replaced with the user's email address."
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/defaultUrlMatcher",
+      "@type": "owl:ObjectProperty",
+      "rdfs:domain": "https://dogm.com/ontologies/core/WebApplication",
+      "rdfs:label": "defaultUrlMatcher",
+      "rdfs:range": "xsd:string",
+      "skos:definition": "A regex which the defaultUrl of a Web Application should match. This will be used to automatically update users' Web Applications with a more specific URL once they login."
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/deleted",
+      "@type": "owl:ObjectProperty",
+      "rdfs:label": "deleted",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/env",
+      "@type": "owl:ObjectProperty",
+      "rdfs:label": "env",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/icons",
+      "@type": "owl:ObjectProperty",
+      "rdfs:label": "icons",
+      "rdfs:range": "https://dogm.com/ontologies/core/File"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/integrations",
+      "@type": "owl:ObjectProperty",
+      "rdfs:label": "integrations",
+      "rdfs:range": "https://dogm.com/ontologies/core/Integration"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/isWeblink",
+      "@type": "owl:ObjectProperty",
+      "rdfs:label": "isWeblink",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/logicalSources",
+      "@type": "owl:ObjectProperty",
+      "rdfs:label": "logicalSources",
+      "rdfs:range": "https://dogm.com/ontologies/core/LogicalSource"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/md5Checksum",
+      "@type": "owl:ObjectProperty",
+      "rdfs:label": "md5Checksum",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/mimeType",
+      "@type": "owl:ObjectProperty",
+      "rdfs:label": "mimeType",
+      "rdfs:range": "xsd:string",
+      "skos:exactMatch": {
+        "@id": "https://schema.org/fileFormat"
+      }
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/nextPageToken",
+      "@type": "owl:ObjectProperty",
+      "rdfs:label": "nextPageToken",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/nullable",
+      "@type": "owl:ObjectProperty",
+      "rdfs:domain": "https://dogm.com/ontologies/core/VerbParameter",
+      "rdfs:label": "nullable",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/oauthTokens",
+      "@type": "owl:ObjectProperty",
+      "rdfs:label": "oauthTokens",
+      "rdfs:range": "https://dogm.com/ontologies/core/OauthToken"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/onEvent",
+      "@type": "owl:ObjectProperty",
+      "rdfs:label": "onEvent",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/openApiDescription",
+      "@type": "owl:ObjectProperty",
+      "rdfs:domain": "https://dogm.com/ontologies/core/OpenApiDescription",
+      "rdfs:label": "openApiDescription",
+      "rdfs:range": "rdf:JSON"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/openApiDescriptions",
+      "@type": "owl:ObjectProperty",
+      "rdfs:label": "openApiDescriptions",
+      "rdfs:range": "https://dogm.com/ontologies/core/OpenApiDescription"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/operationMapping",
+      "@type": "owl:ObjectProperty",
+      "rdfs:label": "operationMapping",
+      "rdfs:range": "rr:TriplesMap"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/parameterMapping",
+      "@type": "owl:ObjectProperty",
+      "rdfs:label": "parameterMapping",
+      "rdfs:range": "rr:TriplesMap"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/parameters",
+      "@type": "owl:ObjectProperty",
+      "rdfs:domain": "https://dogm.com/ontologies/core/Verb",
+      "rdfs:label": "parameters",
+      "rdfs:range": "shacl:NodeShape"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/parametersContext",
+      "@type": "owl:ObjectProperty",
+      "rdfs:domain": "https://dogm.com/ontologies/core/Verb",
+      "rdfs:label": "parametersContext",
+      "rdfs:range": "rdf:JSON"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/parentSourceId",
+      "@type": "owl:ObjectProperty",
+      "rdfs:label": "parentSourceId",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/records",
+      "@type": "owl:ObjectProperty",
+      "rdfs:label": "records",
+      "rdfs:range": "https://dogm.com/ontologies/core/Noun"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/refreshToken",
+      "@type": "owl:ObjectProperty",
+      "rdfs:label": "refreshToken",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/required",
+      "@type": "owl:ObjectProperty",
+      "rdfs:domain": "https://dogm.com/ontologies/core/VerbParameter",
+      "rdfs:label": "required",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/returnType",
+      "@type": "owl:ObjectProperty",
+      "rdfs:domain": "https://dogm.com/ontologies/core/Verb",
+      "rdfs:label": "returnType",
+      "rdfs:range": "xsd:anyUri"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/returnValue",
+      "@type": "owl:ObjectProperty",
+      "rdfs:domain": "https://dogm.com/ontologies/core/Verb",
+      "rdfs:label": "returnValue",
+      "rdfs:range": "shacl:NodeShape"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/returnValueMapping",
+      "@type": "owl:ObjectProperty",
+      "rdfs:label": "returnValueMapping",
+      "rdfs:range": "rr:TriplesMap"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/searchUrl",
+      "@type": "owl:ObjectProperty",
+      "rdfs:domain": "https://dogm.com/ontologies/core/WebApplication",
+      "rdfs:label": "searchUrl",
+      "rdfs:range": "https://dogm.com/ontologies/core/types/UrlTemplate",
+      "skos:definition": "The URL a user should be taken to when searching a Web Application. Can include terms surrounded by curly brackets which will be replaced by user specific values. Eg. {query} will be replaced with the user's query input."
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/size",
+      "@type": "owl:ObjectProperty",
+      "rdfs:label": "size",
+      "rdfs:range": "xsd:integer"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/sourceId",
+      "@type": "owl:ObjectProperty",
+      "rdfs:label": "sourceId",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/status",
+      "@type": "owl:ObjectProperty",
+      "rdfs:label": "status",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/title",
+      "@type": "owl:ObjectProperty",
+      "rdfs:label": "title",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/url",
+      "@type": "owl:ObjectProperty",
+      "rdfs:label": "url",
+      "rdfs:range": "xsd:string",
+      "skos:exactMatch": {
+        "@id": "https://schema.org/url"
+      }
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/urlDomainMatchers",
+      "@type": "owl:ObjectProperty",
+      "rdfs:domain": "https://dogm.com/ontologies/core/WebApplication",
+      "rdfs:label": "urlDomainMatchers",
+      "rdfs:range": "xsd:string",
+      "skos:definition": "Regexes to match URL domains that are associated with a Web Application. Can include a path. All URLs that match an entry must be associated with the Web Application."
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/urlDomains",
+      "@type": "owl:ObjectProperty",
+      "rdfs:domain": "https://dogm.com/ontologies/core/WebApplication",
+      "rdfs:label": "urlDomains",
+      "rdfs:range": "xsd:string",
+      "skos:definition": "URL domains that are associated with a Web Application. Can include a path. All URLs that match an entry must be associated with the Web Application."
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/verb",
+      "@type": "owl:ObjectProperty",
+      "rdfs:label": "verb",
+      "rdfs:range": "https://dogm.com/ontologies/core/Verb"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/verbIntegrationMappings",
+      "@type": "owl:ObjectProperty",
+      "rdfs:label": "verbIntegrationMappings",
+      "rdfs:range": "https://dogm.com/ontologies/core/VerbIntegrationMapping"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/types/Command",
+      "@type": "owl:Class",
+      "rdfs:commment": "A string used as a quick shortcut to filter options in Navigator. Eg. 'gm' for Gmail. Adheres to the /^[a-zA-Z0-9-]{2,}$/ format.",
+      "rdfs:label": "Command",
+      "rdfs:subClassOf": "xsd:string"
+    },
+    {
+      "@id": "https://dogm.com/ontologies/core/types/UrlTemplate",
+      "@type": "owl:Class",
+      "rdfs:label": "UrlTemplate",
+      "rdfs:subClassOf": "xsd:string",
+      "skos:definition": "A URL which can include terms surrounded by curly brackets intended to be replaced by user specific values. Eg. {EMAIL} will be replaced with the user's email address."
+    }
+  ]
+}
